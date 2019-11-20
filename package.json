@@ -1,0 +1,38 @@
+{
+  "name": "team6-challenge9",
+  "homepage": "https://info340c-au19.github.io/team6-challenge9/",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "gh-pages": "^2.1.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.2.0"
+  },
+  "devDependencies": {
+    "@jasonnutter/eslint-config": "^3.0.0",
+    "eslint": "^5.16.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "lint": "eslint src --ext .js --ext .jsx",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
