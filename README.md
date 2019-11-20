@@ -38,7 +38,7 @@ A Recipe website that help people have a good cooking experience.
 - Zhiqing Yang
 
 ### (Work Assignments Draft version)
-- Zixiao HUang：
+- Zixiao Huang：
     - Homepage
 - Grady Thompson： 
     - Search bar
