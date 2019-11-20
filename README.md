@@ -1,54 +1,55 @@
 # team6-challenge9
 
-
-
 ## Project
-A Recipe website that help people have a good cooking experience.
-<br>It will let people find new recipes with tutorial, ingrdients analysis and  making shopping list in an easy and elegant way.
+
+A recipe website that help people have a good cooking experience.
+
+It will let people find new recipes with tutorials and an ingredients analysis. Users can make a shopping list in an easy and elegant way.
 
 ### Users
-- People who looking for new dishes to cook
+
+- People who are looking for new dishes to cook
 - People who do not know how to cook
-- People who hope to have a good cooking experience 
-- People who want tp find recipe in an simple and elegant way.
+- People who hope to have a good cooking experience
+- People who want to find recipe in an simple and elegant way
 
 ### Features
+
 - Multi-version language support
 - Top 10 recipe list
-- Search bar with recipe result return 
-- Home page: 
-    - lot of categories
+- Search bar with recipe result return
+- Home page:
+  - Lots of categories
 - Recipe:
-    - List of ingredients
-    - Shopping list
-    - Tutorial
-    - nutrition analysis
+  - List of ingredients
+  - Shopping list
+  - Tutorial
+  - Nutrition analysis
 
-### libraries, frameworks, and APIs:
-- React app
-- Eslint
+### Libraries, frameworks, and APIs
+
+- React app (`create-react-app`)
+- GitHub Pages
+- ESLint
 - Bootstrap
-- TheMealDB API 
-- Edamam API
+- [TheMealDB API](https://developer.edamam.com/edamam-recipe-api)
+- [Edamam API](https://www.themealdb.com/api.php)
+- [Google Translate API](https://cloud.google.com/translate/)
 
-## Members: 
-- Grady Thompson 
-- Jaren Tilley (PM)h
+### Members
+
+- Grady Thompson
+- Jaren Tilley (PM)
 - Zixiao Huang
 - Vanessa Yang
 
 ### Work Assignments (Draft version)
-- Zixiao Huang：
-    - Homepage
-- Grady Thompson： 
-    - Search bar
+
+- Zixiao Huang:
+  - Homepage
+- Grady Thompson:
+  - Search bar
 - Jaren Tilley (PM)：
-    - Nutrition Analysis
+  - Nutrition Analysis
 - Vanessa Yang：
-    - Recipe Page
-
-
-
-
-
-
+  - Recipe Page
