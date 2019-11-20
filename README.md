@@ -35,7 +35,7 @@ A Recipe website that help people have a good cooking experience.
 - Grady Thompson 
 - Jaren Tilley (PM)h
 - Zixiao Huang
-- Zhiqing Yang
+- Vanessa Yang
 
 ### (Work Assignments Draft version)
 - Zixiao Huang：
@@ -44,7 +44,7 @@ A Recipe website that help people have a good cooking experience.
     - Search bar
 - Jaren Tilley (PM)：
     - Nutrition Analysis
-- Zhiqing Yang：
+- Vanessa Yang：
     - Recipe Page
 
 
