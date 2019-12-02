@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Categories from './Categories';
+import Slideshow from './Slideshow.js';
 
 var recipeSearchAppId = "9a38d544";
 var recipeSearchAppKey = "2a69c4453a2b9bb2e8e8658454f837f4";
@@ -22,6 +23,7 @@ class App extends React.Component {
                 <div className="App">
                     <h1>Super Recipe</h1>
                 </div>
+                <Slideshow/> 
                 <div>
                     <Categories
                         onCategoryClicked={(query) => {
