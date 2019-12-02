@@ -10,8 +10,7 @@
     "react-scripts": "3.2.0"
   },
   "devDependencies": {
-    "@jasonnutter/eslint-config": "^3.0.0",
-    "eslint": "^5.16.0"
+    "@jasonnutter/eslint-config": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
