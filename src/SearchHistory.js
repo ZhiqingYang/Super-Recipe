@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 // import bootstrap
 class SearchHistory extends React.Component {
@@ -11,7 +12,7 @@ class SearchHistory extends React.Component {
                             {this.props.SearchHistory.map((search) => {
                                 return (
                                     <li key={ search }>
-                                        <img className="history-image" alt="search history image"/>
+                                        <img className="history-image" alt="search history"/>
                                         <a id="searchName" href="#" onClick={(e) => {
                                             e.preventDefault();
                                             this.props.onSearchHistoryClicked(search);
@@ -25,6 +26,8 @@ class SearchHistory extends React.Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
+
+export default SearchHistory;
