@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/team6-challenge9/static/css/main.f1bc49f7.chunk.css",
+    "main.js": "/team6-challenge9/static/js/main.5aa1ad4d.chunk.js",
+    "main.js.map": "/team6-challenge9/static/js/main.5aa1ad4d.chunk.js.map",
+    "runtime-main.js": "/team6-challenge9/static/js/runtime-main.12c7fed0.js",
+    "runtime-main.js.map": "/team6-challenge9/static/js/runtime-main.12c7fed0.js.map",
+    "static/js/2.4bcc7e9b.chunk.js": "/team6-challenge9/static/js/2.4bcc7e9b.chunk.js",
+    "static/js/2.4bcc7e9b.chunk.js.map": "/team6-challenge9/static/js/2.4bcc7e9b.chunk.js.map",
+    "index.html": "/team6-challenge9/index.html",
+    "precache-manifest.097d241168fb1c550e0eb41f91d5e50c.js": "/team6-challenge9/precache-manifest.097d241168fb1c550e0eb41f91d5e50c.js",
+    "service-worker.js": "/team6-challenge9/service-worker.js",
+    "static/css/main.f1bc49f7.chunk.css.map": "/team6-challenge9/static/css/main.f1bc49f7.chunk.css.map",
+    "static/media/balanced-diet.jpg": "/team6-challenge9/static/media/balanced-diet.f4222291.jpg",
+    "static/media/chef.svg": "/team6-challenge9/static/media/chef.94fdcd0e.svg",
+    "static/media/high-fiber.jpg": "/team6-challenge9/static/media/high-fiber.6700e69d.jpg",
+    "static/media/high-protein.jpg": "/team6-challenge9/static/media/high-protein.3293d7fa.jpg",
+    "static/media/image1.jpg": "/team6-challenge9/static/media/image1.4e6be69f.jpg",
+    "static/media/image2.jpg": "/team6-challenge9/static/media/image2.3ab3f8fb.jpg",
+    "static/media/image3.jpg": "/team6-challenge9/static/media/image3.a7bf2584.jpg",
+    "static/media/image4.jpg": "/team6-challenge9/static/media/image4.2e76f68d.jpg",
+    "static/media/image5.jpg": "/team6-challenge9/static/media/image5.a66391d7.jpg",
+    "static/media/low-carb.jpg": "/team6-challenge9/static/media/low-carb.fcc16fd1.jpg",
+    "static/media/low-fat.png": "/team6-challenge9/static/media/low-fat.5fdac98b.png",
+    "static/media/low-sodium.jpg": "/team6-challenge9/static/media/low-sodium.ad506404.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.12c7fed0.js",
+    "static/js/2.4bcc7e9b.chunk.js",
+    "static/css/main.f1bc49f7.chunk.css",
+    "static/js/main.5aa1ad4d.chunk.js"
+  ]
+}
