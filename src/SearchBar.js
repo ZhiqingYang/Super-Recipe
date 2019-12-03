@@ -41,7 +41,7 @@ class SearchBar extends React.Component {
                         }) //increment count
                     })
                 }} >Filter</button>
-                {this.state.clickCount % 2 == 1 && (<p>Filter show up</p>) }
+                {this.state.clickCount % 2 === 1 && (<p>Filter show up</p>) }
             </div>
         )
         
