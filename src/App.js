@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import SearchHistory from './SearchHistory';
 import Categories from './Categories';
 import Slideshow from './Slideshow.js';
 import SearchBar from './SearchBar'
@@ -14,7 +15,9 @@ class App extends React.Component {
 
         this.state = {
         json:{},
-        check:0
+        check:0,
+        searchName: "",
+        savedSearches: []
       };
     }
     makeApiRequest = (query) => {
@@ -61,6 +64,16 @@ class App extends React.Component {
         {console.log(this.state.json)}
       </div>
                 <Slideshow/> 
+        <div>
+        {this.state.savedSearches.length > 0 && (
+          <SearchHistory
+            searchHistory={this.state.searchHistory}
+            onSearchHistoryClicked={(search) => {
+              //this.makeRecipeQuery(search);
+            }}
+          />
+        )}
+      </div>
                 <div>
                     <Categories
                         onCategoryClicked={(query) => {
@@ -103,6 +116,5 @@ class App extends React.Component {
         });
     }
 }
-
 
 export default App;
