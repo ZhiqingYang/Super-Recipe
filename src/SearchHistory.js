@@ -11,7 +11,7 @@ class SearchHistory extends React.Component {
                             {this.props.SearchHistory.map((search) => {
                                 return (
                                     <li key={ search }>
-                                        <img className="history-image" alt="search history image"/>
+                                        <img id="searchImage" className="history-image" alt="search history image"/>
                                         <a id="searchName" href="#" onClick={(e) => {
                                             e.preventDefault();
                                             this.props.onSearchHistoryClicked(search);

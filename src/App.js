@@ -5,6 +5,7 @@ import Categories from './Categories';
 import Slideshow from './Slideshow.js';
 import SearchBar from './SearchBar'
 import chef from './chef.svg'
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 var recipeSearchAppId = "9a38d544";
 var recipeSearchAppKey = "2a69c4453a2b9bb2e8e8658454f837f4";
 var appid = "9a38d544"
@@ -20,6 +21,28 @@ class App extends React.Component {
         savedSearches: []
       };
     }
+
+    componentDidMount() {
+      console.log("MOUNTED");
+      var localHistory = localStorage.getItem("weather-queries");
+      console.log(localHistory);
+      var queries = JSON.parse(localHistory) || [];
+      // this.loadSavedQueries(this.savedLocations);
+      console.log(queries[0]);
+      this.setState({
+          savedLocations: queries
+      });
+    }
+
+    SaveQuery = (query) => {
+        var recentSavedHistory = this.state.savedSearches.concat[ query ];
+        this.setState({
+          savedSearches : recentSavedHistory
+        }, () => {
+          localStorage.setItem("search-history", JSON.stringify(this.state.savedSearches));
+        })
+    }
+
     makeApiRequest = (query) => {
       var url = "https://api.edamam.com/search?q="+query+"&app_id="+appid+"&app_key="+apiKey+"&from=0&to=3";
       var fetchPromise = fetch(url);
@@ -35,14 +58,13 @@ class App extends React.Component {
                     check: 0
                 });
             }
+            this.SaveQuery(query);
         });
     });
 
   }
 
     render = () => {
-
-
         return (
             <div>
                 <div className="App">
