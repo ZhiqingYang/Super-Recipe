@@ -7,6 +7,14 @@ import SearchBar from './SearchBar';
 import chef from './chef.svg';
 import ShoppingList from './ShoppingList';
 
+import {
+    HashRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+
+
 var recipeSearchAppId = "9a38d544";
 var recipeSearchAppKey = "2a69c4453a2b9bb2e8e8658454f837f4";
 var appid = "9a38d544";
@@ -70,46 +78,57 @@ class App extends React.Component {
 
 
         return (
-            <div>
-                <div className="App">
-                    <h1>Super Recipe</h1>
-                </div>
+
+            <Router>
                 <div>
-                    <img display="inline-block" src={chef} height="50px" weight="50px" className="chef" alt="chef logo"
-                        onClick={() => {
-                            this.setState({
-                                check: 0
-                            });
-                        }} />
-                    <ShoppingList />
-                    <SearchBar
-                        placeholderText="chicken"
-                        onSubmit={(query) => {
-                            this.makeApiRequest(query);
-                        }} />
-                    <p>{this.state.check}</p>
-                    {console.log(this.state.json)}
-                </div>
-                <Slideshow />
-                <div>
-                    {this.state.savedSearches.length > 0 && (
-                        <SearchHistory
-                            searchHistory={this.state.searchHistory}
-                            onSearchHistoryClicked={(search) => {
+                    <div className="App">
+                        <h1>Super Recipe</h1>
+                    </div>
+                    <div>
+                        <img display="inline-block" src={chef} height="50px" weight="50px" className="chef" alt="chef logo"
+                            onClick={() => {
+                                this.setState({
+                                    check: 0
+                                });
+                            }} />
+                        <Link to="/shoppinglist">Shopping List</Link>
+                        <Switch>
+                            <Route path="/shoppinglist">
+                                <ShoppingList ShoppingList={[]} />
+                            </Route>
+
+                        </Switch>
+
+                        <SearchBar
+                            placeholderText="chicken"
+                            onSubmit={(query) => {
+                                this.makeApiRequest(query);
+                            }} />
+                        <p>{this.state.check}</p>
+                        {console.log(this.state.json)}
+                    </div>
+                    <Slideshow />
+                    <div>
+                        {this.state.savedSearches.length > 0 && (
+                            <SearchHistory
+                                searchHistory={this.state.searchHistory}
+                                onSearchHistoryClicked={(search) => {
                                 // this.makeRecipeQuery(search);
+                                }}
+                            />
+                        )}
+                    </div>
+                    <div>
+                        <Categories
+                            onCategoryClicked={(query) => {
+                                console.log("category clicked", query);
+                                this.makeApiRequestCategory(query);
                             }}
                         />
-                    )}
+                    </div>
                 </div>
-                <div>
-                    <Categories
-                        onCategoryClicked={(query) => {
-                            console.log("category clicked", query);
-                            this.makeApiRequestCategory(query);
-                        }}
-                    />
-                </div>
-            </div>
+            </Router>
+
         );
     }
 
