@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import SearchHistory from './SearchHistory';
 import Categories from './Categories';
-
+import shopping from './shopping-cart.svg'
 import Slideshow from './Slideshow';
 import SearchBar from './SearchBar';
 import chef from './chef.svg';
@@ -15,10 +15,10 @@ import {
     Link
 } from "react-router-dom";
 
-var recipeSearchAppId = "9a38d544";
-var recipeSearchAppKey = "2a69c4453a2b9bb2e8e8658454f837f4";
-var appid = "9a38d544";
-var apiKey = "2a69c4453a2b9bb2e8e8658454f837f4";
+var recipeSearchAppId = "6cd02485";
+var recipeSearchAppKey = "c3b84ef36f4a78721bdf2ecc191bde3a";
+var appid = "6cd02485";
+var apiKey = "c3b84ef36f4a78721bdf2ecc191bde3a";
 
 class App extends React.Component {
     constructor(props) {
@@ -26,7 +26,6 @@ class App extends React.Component {
 
         this.state = {
             json: {},
-
             check: 0,
             searchName: "",
             savedSearches: []
@@ -60,6 +59,7 @@ class App extends React.Component {
         var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=3";
         var fetchPromise = fetch(url);
         fetchPromise.then((response) => {
+            console.log("debug")
             response.json().then((data) => {
                 if (response.status === 200) {
                     this.setState({
@@ -92,7 +92,8 @@ class App extends React.Component {
                                     check: 0
                                 });
                             }} />
-                        <Link to="/shoppinglist">Shopping List</Link>
+                        
+                        <Link to="/shoppinglist"><img display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
                         <Switch>
                             <Route path="/shoppinglist">
                                 <ShoppingList ShoppingList={[]} />

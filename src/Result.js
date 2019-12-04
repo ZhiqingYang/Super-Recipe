@@ -6,8 +6,20 @@ class Result extends React.Component {
             input : "",
             filter : [],
             clickCount : 0
-
         };
+        render = () =>{
+            return(
+                {
+                this.props.data.hits.map((recipe) =>{
+                    
+
+                })
+                }
+            )
+        }
+
+
+
         
     }
 }
