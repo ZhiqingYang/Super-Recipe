@@ -1,13 +1,23 @@
 import React from 'react';
 import './App.css';
+import SearchHistory from './SearchHistory';
 import Categories from './Categories';
-import Slideshow from './Slideshow.js';
+
+import Slideshow from './Slideshow';
 import SearchBar from './SearchBar';
 import chef from './chef.svg';
+import ShoppingList from './ShoppingList';
 import Recipe from './Recipe'
+import {
+    HashRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+
 var recipeSearchAppId = "9a38d544";
 var recipeSearchAppKey = "2a69c4453a2b9bb2e8e8658454f837f4";
-var appid = "9a38d544"
+var appid = "9a38d544";
 var apiKey = "2a69c4453a2b9bb2e8e8658454f837f4";
 
 class App extends React.Component {
@@ -16,9 +26,36 @@ class App extends React.Component {
 
         this.state = {
             json: {},
-            check: 0
+
+            check: 0,
+            searchName: "",
+            savedSearches: []
         };
     }
+
+
+    // componentDidMount() {
+    //     console.log("MOUNTED");
+    //     var localHistory = localStorage.getItem("weather-queries");
+    //     console.log(localHistory);
+    //     var queries = JSON.parse(localHistory) || [];
+    //     // this.loadSavedQueries(this.savedLocations);
+    //     console.log(queries[0]);
+    //     this.setState({
+    //         savedLocations: queries
+    //     });
+    // }
+
+    SaveQuery = (query) => {
+        var recentSavedHistory = this.state.savedSearches.concat[query];
+        this.setState({
+            savedSearches: recentSavedHistory
+        }, () => {
+            localStorage.setItem("search-history", JSON.stringify(this.state.savedSearches));
+        });
+    }
+
+
     makeApiRequest = (query) => {
         var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=3";
         var fetchPromise = fetch(url);
@@ -42,38 +79,57 @@ class App extends React.Component {
     render = () => {
 
         return (
-            <div>
-                <div className="App">
-                    <h1>Super Recipe</h1>
-                </div>
+
+            <Router>
                 <div>
-                    <img display="inline-block" src={chef} height="50px" weight="50px" className="chef" alt="chef-logo"
-                        onClick={() => {
-                            this.setState({
-                                check: 0
-                            })
-                        }} />
-                    <SearchBar
-                        placeholderText="chicken"
-                        onSubmit={(query) => {
-                            this.makeApiRequest(query);
-                        }} />
-                    <p>{this.state.check}</p>
-                    {console.log(this.state.json)}
+                    <div className="App">
+                        <h1>Super Recipe</h1>
+                    </div>
+                    <div>
+                        <img display="inline-block" src={chef} height="50px" weight="50px" className="chef" alt="chef logo"
+                            onClick={() => {
+                                this.setState({
+                                    check: 0
+                                });
+                            }} />
+                        <Link to="/shoppinglist">Shopping List</Link>
+                        <Switch>
+                            <Route path="/shoppinglist">
+                                <ShoppingList ShoppingList={[]} />
+                            </Route>
+
+                        </Switch>
+
+                        <SearchBar
+                            placeholderText="chicken"
+                            onSubmit={(query) => {
+                                this.makeApiRequest(query);
+                            }} />
+                        <p>{this.state.check}</p>
+                        {console.log(this.state.json)}
+                    </div>
+                    <Slideshow />
+                    <div>
+                        {this.state.savedSearches.length > 0 && (
+                            <SearchHistory
+                                searchHistory={this.state.searchHistory}
+                                onSearchHistoryClicked={(search) => {
+                                // this.makeRecipeQuery(search);
+                                }}
+                            />
+                        )}
+                    </div>
+                    <div>
+                        <Categories
+                            onCategoryClicked={(query) => {
+                                console.log("category clicked", query);
+                                this.makeApiRequestCategory(query);
+                            }}
+                        />
+                    </div>
+                    {this.state.check === 1 && (<Recipe data={this.state.json.hits[0]} />)}
                 </div>
-                <Slideshow />
-                <div>
-                    <Categories
-                        onCategoryClicked={(query) => {
-                            console.log("category clicked", query);
-                            this.makeApiRequestCategory(query);
-                        }}
-                    />
-                
-                </div>
-                {this.state.check === 1 && (<Recipe data={this.state.json.hits[0]} />)}
-                
-            </div>
+            </Router>
         );
     }
 
@@ -107,6 +163,5 @@ class App extends React.Component {
         });
     }
 }
-
 
 export default App;
