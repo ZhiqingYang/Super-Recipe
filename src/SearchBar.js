@@ -13,7 +13,9 @@ class SearchBar extends React.Component {
     }
     render = () => {
         return (
+            
             <div>
+                {console.log("2")}
                 <form display="inline-block"
                     onSubmit = {(e) => {
                         e.preventDefault();
