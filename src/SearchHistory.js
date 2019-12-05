@@ -2,6 +2,7 @@
 import React from 'react';
 // import bootstrap
 class SearchHistory extends React.Component {
+    
     render = () => {
         return (
             <div className="container">
@@ -15,7 +16,7 @@ class SearchHistory extends React.Component {
                                         <p className="history-labels">{search.recipe.label}</p>
                                         <a id="searchName" href="#" onClick={(e) => {
                                             e.preventDefault();
-                                            this.props.onSearchHistoryClicked(search);
+                                            this.props.onSearchHistoryClicked(search.recipe.label);
                                         }}>
                                             <img className="history-images" src={search.recipe.image} alt="recipe search" />
                                         </a>

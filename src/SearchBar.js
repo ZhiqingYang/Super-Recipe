@@ -14,15 +14,16 @@ class SearchBar extends React.Component {
     render = () => {
         return (
             
-            <div>
-                {console.log("2")}
-                <form display="inline-block"
+            
+                <form id = "search-form"
                     onSubmit = {(e) => {
                         e.preventDefault();
                         this.props.onSubmit(this.state.input);
                     }}
                 >
+                <div>
                     <input
+                        className = "form-control"
                         type="text"
                         placeholder={this.props.placeholderText}
                         onChange={(e) => {
@@ -32,19 +33,11 @@ class SearchBar extends React.Component {
                             });
                         }}
                     />
-                    <button type="submit">Search</button>
+                    <button className="btn btn-primary" type="submit">Search</button>
+                </div>
+                    
                 </form>
-                <button display="inline-block" type="click" onClick ={(e)=>{
-                    this.setState((currentState, currentProps) => {
-                        // return the Object to "merge" into the state
-                        let count = this.state.clickCount;
-                        this.setState({
-                            clickCount: count + 1
-                        }); // increment count
-                    });
-                }} >Filter</button>
-                {this.state.clickCount % 2 === 1 && (<p>Filter show up</p>) }
-            </div>
+            
         );
 
     }

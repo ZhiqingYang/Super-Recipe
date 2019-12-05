@@ -29,7 +29,8 @@ class App extends React.Component {
             json: {},
             check: 0,
             searchName: "",
-            savedSearches: [] // this.load()
+            savedSearches: [], // this.load()
+            recipe:0
         };
     }
     // load = () => {
@@ -70,7 +71,7 @@ class App extends React.Component {
 
 
     makeApiRequest = (query) => {
-        var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=3";
+        var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=16";
         var fetchPromise = fetch(url);
         fetchPromise.then((response) => {
             console.log("debug");
@@ -97,54 +98,60 @@ class App extends React.Component {
 
             <Router>
                 <div>
+
                     <div className="App">
-                        <h1>Super Recipe</h1>
+                        <Link to="/"><h1>Super Recipe</h1></Link>
                     </div>
                     <div>
-                        <img display="inline-block" src={chef} height="50px" weight="50px" className="chef" alt="chef logo"
+                        <Link to="/"><img display="inline-block" src={chef} height="50px" weight="50px" className="chef" alt="chef logo"
                             onClick={() => {
                                 this.setState({
                                     check: 0
                                 });
                             }} />
-
-                        <Link to="/shoppinglist"><img display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
-                        <Switch>
-                            <Route path="/shoppinglist">
-                                <ShoppingList ShoppingList={[]} />
-                            </Route>
-                        </Switch>
+                        </Link>
 
                         <SearchBar
                             placeholderText="chicken"
                             onSubmit={(query) => {
                                 this.makeApiRequest(query);
                             }} />
+                        <Link to="/shoppinglist"><img className="shop" display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
                         <p>{this.state.check}</p>
                         {console.log(this.state.json)}
-                    </div>
-                    <Slideshow />
-                    <div>
-                        {console.log("HERRRREEE", this.state.savedSearches)};
-                        {this.state.savedSearches.length > 0 && (
-                            <SearchHistory
-                                searchHistory={this.state.savedSearches}
-                                onSearchHistoryClicked={() => {
-
-                                }}
-                            />
+                        {this.state.check === 0 &&(
+                        <Switch>
+                            <Route exact={true} path="/">
+                                <Slideshow />
+                                <div>
+                                    <Categories
+                                        onCategoryClicked={(query) => {
+                                            console.log("category clicked", query);
+                                            this.makeApiRequestCategory(query);
+                                        }}
+                                    />
+                                </div>
+                                <div>
+                                    {console.log("HERRRREEE", this.state.savedSearches)};
+                                    {this.state.savedSearches.length > 0 && (
+                                        <SearchHistory
+                                            searchHistory={this.state.savedSearches}
+                                            onSearchHistoryClicked={(search) => {
+                                                console.log('clicked on history for', search);
+                                                this.makeApiRequest(search);
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </Route>
+                        </Switch> 
                         )}
+                        
                     </div>
-                    <div>
-                        <Categories
-                            onCategoryClicked={(query) => {
-                                console.log("category clicked", query);
-                                this.makeApiRequestCategory(query);
-                            }}
-                        />
-                    </div>
-                    {this.state.check === 1 && (<Result data={this.state.json} />)}
 
+
+                    {this.state.check === 1 && (<Result data={this.state.json} onClick={this.resultOnClick} />)}
+                    {this.state.check === 3 && (<Recipe data={this.state.recipe}/>)}
                 </div>
             </Router>
 
@@ -174,6 +181,12 @@ class App extends React.Component {
 
             });
         });
+    }
+    resultOnClick = (data) => {
+        this.setState({
+            check: 3,
+            recipe: data
+        })
     }
 }
 
