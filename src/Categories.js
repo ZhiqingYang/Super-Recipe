@@ -13,77 +13,74 @@ class Categories extends Component {
         console.log('props', this.props);
         return (
             <div>
-                <h2>Categories</h2>
-                <div className="category">
-                    <h3>Balanced Diet</h3>
-                    {/* Probably will need to update these heading levels */}
-                    <a href="#" className="category-name" onClick={(e) => {
-                        e.preventDefault();
-                        console.log("balanced clicked");
-                        this.props.onCategoryClicked("balanced");
-                    }}>
-                        <img className="category-image" src={balancedDietImg} alt="Balanced Diet" />
-                    </a>
-                </div>
-
-                <div className="category">
-                    <h3>High Protein</h3>
-                    {/* Probably will need to update these heading levels */}
-                    <a href="#" className="category-name" onClick={(e) => {
-                        e.preventDefault();
-                        console.log("high-protein clicked");
-                        this.props.onCategoryClicked("high-protein");
-                    }}>
-                        <img className="category-image" src={highProteinImg} alt="High Protein" />
-                    </a>
-                </div>
-
-                <div className="category">
-                    <h3>High Fiber</h3>
-                    {/* Probably will need to update these heading levels */}
-                    <a href="#" className="category-name" onClick={(e) => {
-                        e.preventDefault();
-                        console.log("high fiber clicked");
-                        this.props.onCategoryClicked("high-fiber");
-                    }}>
-                        <img className="category-image" src={highFiberImg} alt="High Fiber" />
-                    </a>
-                </div>
-
-                <div className="category">
-                    <h3>Low Fat</h3>
-                    {/* Probably will need to update these heading levels */}
-                    <a href="#" className="category-name" onClick={(e) => {
-                        e.preventDefault();
-                        console.log("low-fat clicked");
-                        this.props.onCategoryClicked("low-fat");
-                    }}>
-                        <img className="category-image" src={lowFatImg} alt="Low Fat" />
-                    </a>
-                </div>
-
-                <div className="category">
-                    <h3>Low Carb</h3>
-                    {/* Probably will need to update these heading levels */}
-                    <a href="#" className="category-name" onClick={(e) => {
-                        e.preventDefault();
-                        console.log("high protein clicked");
-                        this.props.onCategoryClicked("low-carb");
-                    }}>
-                        <img className="category-image" src={lowCarbImg} alt="Low Carb" />
-                    </a>
-                </div>
-
-                <div className="category">
-                    <h3>Low Sodium</h3>
-                    {/* Probably will need to update these heading levels */}
-                    <a href="#" className="category-name" onClick={(e) => {
-                        e.preventDefault();
-                        console.log("low-sodium clicked");
-                        this.props.onCategoryClicked("low-sodium");
-                    }}>
-                        <img className="category-image" src={lowSodiumImg} alt="Low Sodium" />
-                    </a>
+                <h2>Healthy Categories</h2>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6 col-12 category">
+                            <a href="#" className="category-name" onClick={(e) => {
+                                e.preventDefault();
+                                console.log("balanced clicked");
+                                this.props.onCategoryClicked("balanced");
+                            }}>
+                                <h3>Balanced Diet</h3>
+                                <img className="category-image img-thumbnail" src={balancedDietImg} alt="Balanced Diet" />
+                            </a>
+                        </div>
+                        <div className="col-md-6 col-12 category">
+                            <a href="#" className="category-name" onClick={(e) => {
+                                e.preventDefault();
+                                console.log("high-protein clicked");
+                                this.props.onCategoryClicked("high-protein");
+                            }}>
+                                <h3>High Protein</h3>
+                                <img className="category-image img-thumbnail" src={highProteinImg} alt="High Protein" />
+                            </a>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6 col-12 category">
+                            <a href="#" className="category-name" onClick={(e) => {
+                                e.preventDefault();
+                                console.log("high fiber clicked");
+                                this.props.onCategoryClicked("high-fiber");
+                            }}>
+                                <h3>High Fiber</h3>
+                                <img className="category-image img-thumbnail" src={highFiberImg} alt="High Fiber" />
+                            </a>
+                        </div>
+                        <div className="col-md-6 col-12 category">
+                            <a href="#" className="category-name" onClick={(e) => {
+                                e.preventDefault();
+                                console.log("low-fat clicked");
+                                this.props.onCategoryClicked("low-fat");
+                            }}>
+                                <h3>Low Fat</h3>
+                                <img className="category-image img-thumbnail" src={lowFatImg} alt="Low Fat" />
+                            </a>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6 col-12 category">
+                            <a href="#" className="category-name" onClick={(e) => {
+                                e.preventDefault();
+                                console.log("high protein clicked");
+                                this.props.onCategoryClicked("low-carb");
+                            }}>
+                                <h3>Low Carb</h3>
+                                <img className="category-image img-thumbnail" src={lowCarbImg} alt="Low Carb" />
+                            </a>
+                        </div>
+                        <div className="col-md-6 col-12 category">
+                            <a href="#" className="category-name" onClick={(e) => {
+                                e.preventDefault();
+                                console.log("low-sodium clicked");
+                                this.props.onCategoryClicked("low-sodium");
+                            }}>
+                                <h3>Low Sodium</h3>
+                                <img className="category-image img-thumbnail" src={lowSodiumImg} alt="Low Sodium" />
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
