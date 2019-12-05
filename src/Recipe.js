@@ -132,7 +132,7 @@ class Recipe extends React.Component {
         var pValue = JSON.parse(pSearches);
         console.log("get", pValue);
         var newValue = pValue;
-        if (!pValue.includes(value)) {
+        if (JSON.stringify(pValue).indexOf(JSON.stringify(value))===-1) {
             newValue = pValue.concat([value]);
         }
 
