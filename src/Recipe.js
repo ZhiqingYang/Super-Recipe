@@ -139,7 +139,6 @@ class Recipe extends React.Component {
         // var queriesJson = JSON.stringify(newSavedLocations);
         var save = JSON.stringify(newValue);
         localStorage.setItem(key, save); // update local storage
-        this.props.saveLocal();
     }
 
 }

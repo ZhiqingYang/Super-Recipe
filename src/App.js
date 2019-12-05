@@ -43,7 +43,6 @@ class App extends React.Component {
     //     // });
     //     return (queries);
     // }
-
     componentDidMount() {
         console.log("MOUNTED");
         var localHistory = localStorage.getItem("viewHistory");
@@ -56,15 +55,15 @@ class App extends React.Component {
         });
     }
 
-    // saveQuery = () => {
-    //     console.log("MOUNTED");
-    //     var history = localStorage.getItem("viewHistory");
-    //     console.log(history);
-    //     var queries = JSON.parse(history) || [];
-    //     // this.loadSavedQueries(this.savedLocations);
-    //     console.log(history[0]);
+    // SaveQuery = (query) => {
+    //     var recentSavedHistory = this.state.savedSearches.concat[ query ];
+    //     if (recentSavedHistory.length > 5) {
+    //         recentSavedHistory.shift();
+    //     }
     //     this.setState({
-    //         savedSearches: history
+    //         savedSearches: recentSavedHistory
+    //     }, () => {
+    //         localStorage.setItem("search-history", JSON.stringify(this.state.savedSearches));
     //     });
     // }
 
@@ -141,6 +140,8 @@ class App extends React.Component {
                             }}
                         />
                     </div>
+                    {this.state.check === 1 && (<Result data={this.state.json} />)}
+                    {this.state.check === 5 && (<Recipe data={this.state.json.hits[0]} />)}
                 </div>
             </Router>
 
