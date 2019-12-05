@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ca6dff86c9b3ebaf7e747e66aae53519",
+    "revision": "d9fc19fa98beba13af3095b01ca4b704",
     "url": "/team6-challenge9/index.html"
   },
   {
-    "revision": "6594f292262a7c3b7193",
-    "url": "/team6-challenge9/static/css/main.f1bc49f7.chunk.css"
+    "revision": "5340756b91d753e988dd",
+    "url": "/team6-challenge9/static/css/main.b12f95f5.chunk.css"
   },
   {
-    "revision": "633df604cd4393946c5a",
-    "url": "/team6-challenge9/static/js/2.927db115.chunk.js"
+    "revision": "b3285bd957e45840a0c8",
+    "url": "/team6-challenge9/static/js/2.6764a58c.chunk.js"
   },
   {
-    "revision": "6594f292262a7c3b7193",
-    "url": "/team6-challenge9/static/js/main.b3ad633b.chunk.js"
+    "revision": "5340756b91d753e988dd",
+    "url": "/team6-challenge9/static/js/main.dfe760d7.chunk.js"
   },
   {
     "revision": "17c6e7d484f7fda360de",
@@ -36,24 +36,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/team6-challenge9/static/media/high-protein.3293d7fa.jpg"
   },
   {
-    "revision": "4e6be69f85e9bbfb8558fb454ff7c24b",
-    "url": "/team6-challenge9/static/media/image1.4e6be69f.jpg"
+    "revision": "b09bc0839f11059b3cd654e35bdbac94",
+    "url": "/team6-challenge9/static/media/image1.b09bc083.jpg"
   },
   {
-    "revision": "3ab3f8fb6afa2bee6ead317ad49ed570",
-    "url": "/team6-challenge9/static/media/image2.3ab3f8fb.jpg"
+    "revision": "91c4c765b20be8cf7abc66a1b508873e",
+    "url": "/team6-challenge9/static/media/image2.91c4c765.jpg"
   },
   {
-    "revision": "a7bf2584912228673ad9fe24c2659d26",
-    "url": "/team6-challenge9/static/media/image3.a7bf2584.jpg"
+    "revision": "7542ff1ba31284d487310040c93555cd",
+    "url": "/team6-challenge9/static/media/image3.7542ff1b.jpg"
   },
   {
-    "revision": "2e76f68dca79ca5041e80786826e55e1",
-    "url": "/team6-challenge9/static/media/image4.2e76f68d.jpg"
+    "revision": "de9b21a17b9e7c39e68599817f16acda",
+    "url": "/team6-challenge9/static/media/image4.de9b21a1.jpg"
   },
   {
-    "revision": "a66391d7cf6b93882123acc46e0fcfe0",
-    "url": "/team6-challenge9/static/media/image5.a66391d7.jpg"
+    "revision": "44f47938356caf136daf8f6be293c72e",
+    "url": "/team6-challenge9/static/media/image5.44f47938.jpg"
   },
   {
     "revision": "fcc16fd1ced9d406e9b3241136ff4aaf",
@@ -66,5 +66,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ad5064044e31683f0916736363811d9a",
     "url": "/team6-challenge9/static/media/low-sodium.ad506404.jpg"
+  },
+  {
+    "revision": "d35256266f169115dfe17ff5a59219b0",
+    "url": "/team6-challenge9/static/media/shopping-cart.d3525626.svg"
   }
 ]);
