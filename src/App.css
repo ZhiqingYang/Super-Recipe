@@ -95,9 +95,6 @@
   border-radius: 50%;
 }
 
-
-
-
 .recipe-first {
   border:1px solid black;
   /* width: 500px; */
@@ -161,8 +158,6 @@ h4 {
   margin-left: auto;
   margin-right: auto;
 }
-
-
 
 .instruction {
   text-align: center;
