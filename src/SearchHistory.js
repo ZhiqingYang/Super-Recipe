@@ -8,16 +8,16 @@ class SearchHistory extends React.Component {
                 <div className="row">
                     <div className="col-md-6">
                         <h2>Recipe Search History</h2>
-                        <ul>
+                        <ul className="history-list">
                             {this.props.searchHistory.map((search) => {
                                 return (
                                     <li key={search.recipe.label}>
-                                        <img src={search.recipe.image} alt="recipe search" />
+                                        <p className="history-labels">{search.recipe.label}</p>
                                         <a id="searchName" href="#" onClick={(e) => {
                                             e.preventDefault();
                                             this.props.onSearchHistoryClicked(search);
                                         }}>
-                                            {search}
+                                            <img className="history-images" src={search.recipe.image} alt="recipe search" />
                                         </a>
                                     </li>
                                 );

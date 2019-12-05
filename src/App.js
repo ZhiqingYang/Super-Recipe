@@ -28,34 +28,43 @@ class App extends React.Component {
             json: {},
             check: 0,
             searchName: "",
-            savedSearches: this.load()
+            savedSearches: [] // this.load()
         };
     }
-    load = () => {
-        var localHistory = localStorage.getItem("viewHistory");
-        console.log("history", localHistory);
-        var queries = JSON.parse(localHistory) || [];
-        console.log(queries[0]);
-        // this.setState({
-        //     savedSearches: queries
-        // }, () => {
-        //     console.log("Data TEST", this.savedSearches);
-        // });
-        return (queries);
-    }
+    // load = () => {
+    //     var localHistory = localStorage.getItem("viewHistory");
+    //     console.log("history", localHistory);
+    //     var queries = JSON.parse(localHistory) || [];
+    //     console.log(queries[0]);
+    //     // this.setState({
+    //     //     savedSearches: queries
+    //     // }, () => {
+    //     //     console.log("Data TEST", this.savedSearches);
+    //     // });
+    //     return (queries);
+    // }
+
     componentDidMount() {
-        console.log("THISSSSSSSS", this.state.savedSearches);
+        console.log("MOUNTED");
+        var localHistory = localStorage.getItem("viewHistory");
+        console.log(localHistory);
+        var queries = JSON.parse(localHistory) || [];
+        // this.loadSavedQueries(this.savedLocations);
+        console.log(queries[0]);
+        this.setState({
+            savedSearches: queries
+        });
     }
 
-    // SaveQuery = (query) => {
-    //     var recentSavedHistory = this.state.savedSearches.concat[ query ];
-    //     if (recentSavedHistory.length > 5) {
-    //         recentSavedHistory.shift();
-    //     }
+    // saveQuery = () => {
+    //     console.log("MOUNTED");
+    //     var history = localStorage.getItem("viewHistory");
+    //     console.log(history);
+    //     var queries = JSON.parse(history) || [];
+    //     // this.loadSavedQueries(this.savedLocations);
+    //     console.log(history[0]);
     //     this.setState({
-    //         savedSearches: recentSavedHistory
-    //     }, () => {
-    //         localStorage.setItem("search-history", JSON.stringify(this.state.savedSearches));
+    //         savedSearches: history
     //     });
     // }
 
@@ -117,7 +126,7 @@ class App extends React.Component {
                         {console.log("HERRRREEE", this.state.savedSearches)};
                         {this.state.savedSearches.length > 0 && (
                             <SearchHistory
-                                searchHistory={this.state.savedSearches[]}
+                                searchHistory={this.state.savedSearches}
                                 onSearchHistoryClicked={() => {
 
                                 }}
@@ -132,8 +141,6 @@ class App extends React.Component {
                             }}
                         />
                     </div>
-                    {this.state.check === 1 && (<Result data={this.state.json} />)}
-                    {this.state.check === 5 && (<Recipe data={this.state.json.hits[0]} />)}
                 </div>
             </Router>
 
