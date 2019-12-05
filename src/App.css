@@ -92,15 +92,10 @@
   height: 50px;
   width: auto;
   float: left;
+  border-radius: 50%;
 }
 
-.history-list {
-  list-style-type: none;
-}
 
-.history-title{
-  text-align: center;
-}
 
 
 .recipe-first {
@@ -176,10 +171,25 @@ h4 {
   margin-right: auto;
 }
 
+.history-list {
+  border: 0.5px solid lightgrey;
+  list-style-type: none;
+  width: 50%;
+  border-right: none;
+}
 
+.history-labels {
+  margin-top: 30px;
+  margin-bottom: 0;
+  margin-left: 30px;
+  padding-left: 15px;
+  padding-top: 15px;
+}
 
-
-
+#history-title{
+  text-align: center;
+  padding-left: 30px;
+}
 
 
 
