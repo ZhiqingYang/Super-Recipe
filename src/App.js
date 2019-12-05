@@ -118,7 +118,7 @@ class App extends React.Component {
                         <Link to="/shoppinglist"><img className="shop" display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
                         <p>{this.state.check}</p>
                         {console.log(this.state.json)}
-
+                        {this.state.check === 0 &&(
                         <Switch>
                             <Route exact={true} path="/">
                                 <Slideshow />
@@ -142,7 +142,9 @@ class App extends React.Component {
                                     )}
                                 </div>
                             </Route>
-                        </Switch>
+                        </Switch> 
+                        )}
+                        
                     </div>
 
                     {this.state.check === 1 && (<Result data={this.state.json} />)}
