@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/team6-challenge9/static/css/main.822d2472.chunk.css",
-    "main.js": "/team6-challenge9/static/js/main.f9e280e2.chunk.js",
-    "main.js.map": "/team6-challenge9/static/js/main.f9e280e2.chunk.js.map",
+    "main.js": "/team6-challenge9/static/js/main.dd64fd6d.chunk.js",
+    "main.js.map": "/team6-challenge9/static/js/main.dd64fd6d.chunk.js.map",
     "runtime-main.js": "/team6-challenge9/static/js/runtime-main.12c7fed0.js",
     "runtime-main.js.map": "/team6-challenge9/static/js/runtime-main.12c7fed0.js.map",
     "static/js/2.99019d0f.chunk.js": "/team6-challenge9/static/js/2.99019d0f.chunk.js",
     "static/js/2.99019d0f.chunk.js.map": "/team6-challenge9/static/js/2.99019d0f.chunk.js.map",
     "index.html": "/team6-challenge9/index.html",
-    "precache-manifest.b0a791f7f8c80716541a4c0de871a153.js": "/team6-challenge9/precache-manifest.b0a791f7f8c80716541a4c0de871a153.js",
+    "precache-manifest.cb925f8a7c2bffc5534a9b6c55cd4aaf.js": "/team6-challenge9/precache-manifest.cb925f8a7c2bffc5534a9b6c55cd4aaf.js",
     "service-worker.js": "/team6-challenge9/service-worker.js",
     "static/css/main.822d2472.chunk.css.map": "/team6-challenge9/static/css/main.822d2472.chunk.css.map",
     "static/media/balanced-diet.jpg": "/team6-challenge9/static/media/balanced-diet.f4222291.jpg",
@@ -29,6 +29,6 @@
     "static/js/runtime-main.12c7fed0.js",
     "static/js/2.99019d0f.chunk.js",
     "static/css/main.822d2472.chunk.css",
-    "static/js/main.f9e280e2.chunk.js"
+    "static/js/main.dd64fd6d.chunk.js"
   ]
 }
