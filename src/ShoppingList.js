@@ -5,13 +5,12 @@ class ShoppingList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: false,
-            shoppingItems: []
+            checked: false
         };
     }
 
     removeAll = () => {
-        localStorage.setItem("ingredients", JSON.stringify(this.state.shoppingItems));
+        localStorage.removeItem("shopping");
     }
 
     // componentDidMount() {
@@ -44,6 +43,7 @@ class ShoppingList extends React.Component {
                 </ul>
 
                 <button id="clear-shopping-list" onClick={(e) => {
+                    e.preventDefault();
                     this.removeAll();
                 }}>
                     Clear All

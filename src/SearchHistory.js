@@ -16,7 +16,7 @@ class SearchHistory extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6">
-                        <h2>Recipe Search History</h2>
+                        <h2 id="history-title">Recipe Search History</h2>
                         <ul className="history-list">
                             {this.props.searchHistory.map((search) => {
                                 return (
@@ -26,6 +26,7 @@ class SearchHistory extends React.Component {
                                             e.preventDefault();
                                             // this.props.onSearchHistoryClicked(search);
                                             // <Recipe data={this.state.stage} />
+    
                                         }}>
                                             <img className="history-images" src={search.recipe.image} alt="recipe search" />
                                         </a>

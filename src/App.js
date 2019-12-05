@@ -52,15 +52,20 @@ class App extends React.Component {
         var queries = JSON.parse(localHistory) || [];
         // this.loadSavedQueries(this.savedLocations);
         console.log(queries[0]);
-        if (queries.length > 5) {
-            queries.shift();
-        }
+        console.log("THIS");
+        var shoppingJson = localStorage.getItem("shopping");
+        console.log('JSONNNNNNNNNNNNNNN', shoppingJson);
+        var shoppingListParsed = JSON.parse(shoppingJson) || [];
+        console.log(shoppingListParsed[0]);
+        console.log('PARSEDDDDDDDD', shoppingListParsed);
+        // if (queries.length > 5) {
+        //     queries.shift();
+        // }
         this.setState({
-            savedSearches: queries
+            savedSearches: queries,
+            shoppingItems: shoppingListParsed
         });
-        this.readShoppingList();
     }
-
     // SaveQuery = (query) => {
     //     var recentSavedHistory = this.state.savedSearches.concat[ query ];
     //     
@@ -94,8 +99,6 @@ class App extends React.Component {
     }
 
     render = () => {
-
-
         return (
 
             <Router>
@@ -155,30 +158,6 @@ class App extends React.Component {
                             </Route>
                         </Switch>
                     </div>
-<<<<<<< HEAD
-                    <Slideshow />
-                    <div>
-                        {console.log("HERRRREEE", this.state.shoppingItems)};
-                        {this.state.savedSearches.length > 0 && (
-                            <SearchHistory
-                                searchHistory={this.state.savedSearches}
-                            // onSearchHistoryClicked={(search) => {
-                            //     this.state.check === 1 && (<Recipe data={search} />)
-                            // }}
-                            />
-                        )}
-                    </div>
-                    <div>
-                        <Categories
-                            onCategoryClicked={(query) => {
-                                console.log("category clicked", query);
-                                this.makeApiRequestCategory(query);
-                            }}
-                        />
-                    </div>
-=======
-
->>>>>>> 04fff3189109e5323640c227c5b77850c1de1f74
                     {this.state.check === 1 && (<Result data={this.state.json} />)}
                 </div>
             </Router>
@@ -208,18 +187,6 @@ class App extends React.Component {
                 }
 
             });
-        });
-    }
-    
-    readShoppingList() {
-        console.log("THIS");
-        var shoppingJson = localStorage.getItem("shopping");
-        console.log('JSONNNNNNNNNNNNNNN', shoppingJson);
-        var shoppingListParsed = JSON.parse(shoppingJson) || [];
-        console.log(shoppingListParsed[0]);
-        console.log('PARSEDDDDDDDD', shoppingListParsed);
-        this.setState({
-            shoppingItems: shoppingListParsed
         });
     }
 }
