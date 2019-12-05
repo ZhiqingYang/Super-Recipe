@@ -29,7 +29,8 @@ class App extends React.Component {
             json: {},
             check: 0,
             searchName: "",
-            savedSearches: [] // this.load()
+            savedSearches: [], // this.load()
+            recipe:0
         };
     }
     // load = () => {
@@ -148,7 +149,8 @@ class App extends React.Component {
                         
                     </div>
 
-                    {this.state.check === 1 && (<Result data={this.state.json} />)}
+                    {this.state.check === 1 && (<Result data={this.state.json} onClick={this.resultOnClick} />)}
+                    {this.state.check === 3 && (<Recipe data={this.state.recipe}/>)}
                 </div>
             </Router>
 
@@ -178,6 +180,12 @@ class App extends React.Component {
 
             });
         });
+    }
+    resultOnClick = (data) => {
+        this.setState({
+            check: 3,
+            recipe: data
+        })
     }
 }
 
