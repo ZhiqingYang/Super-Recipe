@@ -8,9 +8,25 @@ class SearchHistory extends React.Component {
         super(props);
 
         this.state = {
-            stage: 0
+            searchHistory: this.props.SearchHistory
         };
     }
+
+    // loadViewHistory() {
+    //             console.log("MOUNTED");
+    //     var localHistory = localStorage.getItem("viewHistory");
+    //     console.log(localHistory);
+    //     var queries = JSON.parse(localHistory) || [];
+    //     // this.loadSavedQueries(this.savedLocations);
+    //     console.log(queries[0]);
+    //     if (queries.length > 5) {
+    //         queries.shift();
+    //     }
+    //     this.setState({
+    //         savedSearches: queries
+    //     });
+    // }
+
     render = () => {
         return (
             <div className="container">
