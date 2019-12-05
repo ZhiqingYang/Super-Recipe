@@ -1,6 +1,7 @@
 import React from 'react';
 import BackArrow from './LeftArrow.js';
 import NextArrow from './RightArrow.js';
+import './App.css';
 
 
 class Slideshow extends React.Component {
@@ -22,26 +23,40 @@ class Slideshow extends React.Component {
         return (
             <div>
 
-                <div
-                    style={{ left: "10px", position: "relative" }}>
+                
+                    <div 
+                    style={{position: "relative"}}>
+                        
+                        
+                        {this.state.slideCount !== 0 ? <BackArrow previousImage={this.previousImage}/> : ''} 
 
+                        {this.state.slideCount !== (this.state.photos.length - 1) ? <NextArrow nextImage={this.nextImage}/> : ''}
+                      
+                        <div >
+                            {this.state.photos.map((photo, key) => {
+                                if (this.state.photos.indexOf(photo) === this.state.slideCount) {
+                                    
+                                    var css = {
+                                        background: `url(${photo}`,
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center",
+                                        height: "300px",
+                                        width: "100%",
+                                        backgroundRepeat: "no-repeat"
+                                
+                                    };
+                                    
+                                    return (
+                                        <div key={photo} style={css}>
+                                        {/* <img className="slideshow" src={photo} alt="food"/> */}
+                                        </div>
+                                        )
+                                }
+                                return ''
+                            })}
+                        </div>
+                        
 
-                    {this.state.slideCount !== 0 ? <BackArrow previousImage={this.previousImage} /> : ''}
-
-                    {this.state.slideCount !== (this.state.photos.length - 1) ? <NextArrow nextImage={this.nextImage} /> : ''}
-
-                    <div>
-                        {this.state.photos.map((photo, key) => {
-                            if (this.state.photos.indexOf(photo) === this.state.slideCount) {
-                                return (
-                                    <div key={photo}>
-                                        <img src={photo} alt="food" />
-                                    </div>
-                                );
-                            }
-                            return '';
-                        })}
-                    </div>
 
                 </div>
 
