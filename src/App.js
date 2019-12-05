@@ -57,7 +57,7 @@ class App extends React.Component {
 
 
     makeApiRequest = (query) => {
-        var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=3";
+        var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=16";
         var fetchPromise = fetch(url);
         fetchPromise.then((response) => {
             console.log("debug");
@@ -129,7 +129,6 @@ class App extends React.Component {
                         />
                     </div>
                     {this.state.check === 1 && (<Result data={this.state.json}/>)}
-                    {this.state.check === 5 && (<Recipe data={this.state.json.hits[0]} />)}
                 </div>
             </Router>
         );

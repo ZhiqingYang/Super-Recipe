@@ -19,23 +19,25 @@ class Result extends React.Component {
                 console.log("img",content.recipe.image);
             })
             return(
-                <div>
+                
+                <div className="container">
+                    <div className="row">
                     {array.map((content)=>{
 
-                        return(<div key={content.recipe.image}>
+                        return(<div key={content.recipe.image} className="col-md-3 col-sm-12">
                                     <a href="#" onClick={(e)=>{
                                         console.log("recipe",content);
                                         this.setState({
                                             stage : content
                                         });
                                     }}>
-                                        <img src={content.recipe.image}/>
+                                        <img className="img-thumbnail"src={content.recipe.image}/>
                                         <p>{content.recipe.label}</p>
                                     </a>
                                 </div>)
                     })
                     }
-                    {console.log("input",this.state.stage)}
+                    </div>
                     {this.state.stage && (<Recipe data={this.state.stage}/>)}
                     
                 </div> 
