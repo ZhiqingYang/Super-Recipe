@@ -144,7 +144,7 @@ class App extends React.Component {
                         />
                     </div>
                     {this.state.check === 1 && (<Result data={this.state.json} />)}
-                    {this.state.check === 1 && (<Recipe data={this.state.json.hits[0]} />)}
+
                 </div>
             </Router>
 
