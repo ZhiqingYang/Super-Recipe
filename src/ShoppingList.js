@@ -16,11 +16,12 @@ class ShoppingList extends React.Component {
         return (
             <div>
                 <h2 id="shop-title">Shopping List</h2>
-                <ul>
 
+                <ul className = "list-group">
+                    <li className = "list-group-item list-group-item-dark">My Shopping List</li>
                     {this.props.shopping.map((ingredient) => {
                         return (
-                            <li className="shop-box" key={ingredient}>
+                            <li className="shop-box" className = "list-group-item" key={ingredient}>
 
                                 <p className="ingredient">
                                     {ingredient}
@@ -32,7 +33,8 @@ class ShoppingList extends React.Component {
                     })}
                 </ul>
 
-                <button type="button" className="btn btn-secondary" id="clear-shopping-list" onClick={(e) => {
+                <button id="clear-shopping-list" className="btn btn-primary" onClick={(e) => {
+
                     this.props.clearAll();
 
                 }}>
