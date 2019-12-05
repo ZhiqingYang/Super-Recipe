@@ -133,7 +133,6 @@ class Recipe extends React.Component {
 
                 {/* Save viewHistory data and ingredients data to local storage */}
                 {this.saveLocal("viewHistory", this.props.data)}
-                
 
 
             </div>
@@ -160,11 +159,11 @@ class Recipe extends React.Component {
         console.log("get", pValue);
         var newValue = pValue;
 
-        if (JSON.stringify(pValue).indexOf(JSON.stringify(value))===-1) {
-            newValue = pValue.concat([value]);
+        if (JSON.stringify(pValue).indexOf(JSON.stringify(value)) === -1) {
+            newValue = pValue.concat([ value ]);
             var save = JSON.stringify(newValue);
             localStorage.setItem(key, save); // update local storage
-            this.props.history()
+            this.props.history();
             this.props.shopping();
 
         } else {
