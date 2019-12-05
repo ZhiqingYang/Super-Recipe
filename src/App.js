@@ -83,32 +83,29 @@ class App extends React.Component {
 
             <Router>
                 <div>
-                    <div className="App">
+                    <div className="header">
+                        <div className="App">
                         <h1>Super Recipe</h1>
                     </div>
                     <div>
-                        <img display="inline-block" src={chef} height="50px" weight="50px" className="chef" alt="chef logo"
+                        <img className="chef"src={chef}  alt="chef logo"
                             onClick={() => {
                                 this.setState({
                                     check: 0
                                 });
                             }} />
 
-                        <Link to="/shoppinglist"><img display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
-                        <Switch>
-                            <Route path="/shoppinglist">
-                                <ShoppingList ShoppingList={[]} />
-                            </Route>
-                        </Switch>
-
                         <SearchBar
                             placeholderText="chicken"
                             onSubmit={(query) => {
                                 this.makeApiRequest(query);
                             }} />
+                        <Link to="/shoppinglist"><img className="shop" display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
                         <p>{this.state.check}</p>
                         {console.log(this.state.json)}
                     </div>
+                    </div>
+                    
                     <Slideshow />
                     <div>
                         {this.state.savedSearches.length > 0 && (
@@ -128,6 +125,11 @@ class App extends React.Component {
                             }}
                         />
                     </div>
+                    <Switch>
+                            <Route path="/shoppinglist">
+                                <ShoppingList ShoppingList={[]} />
+                            </Route>
+                        </Switch>
                     {this.state.check === 1 && (<Result data={this.state.json}/>)}
                 </div>
             </Router>
