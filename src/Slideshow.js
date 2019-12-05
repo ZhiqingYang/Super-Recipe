@@ -10,11 +10,11 @@ class Slideshow extends React.Component {
 
         this.state = {
             photos: [require('./img/image1.jpg'),
-                    require('./img/image2.jpg'),
-                    require('./img/image3.jpg'),
-                    require('./img/image4.jpg'),
-                    require('./img/image5.jpg')
-                    ],
+            require('./img/image2.jpg'),
+            require('./img/image3.jpg'),
+            require('./img/image4.jpg'),
+            require('./img/image5.jpg')
+            ],
             slideCount: 0
         };
     }
@@ -22,6 +22,7 @@ class Slideshow extends React.Component {
     render = () => {
         return (
             <div>
+
                 
                     <div 
                     style={{position: "relative"}}>
@@ -55,8 +56,10 @@ class Slideshow extends React.Component {
                             })}
                         </div>
                         
-                    </div>
-                 
+
+
+                </div>
+
 
                 <div>
                     {console.log(this.state.photos[0])}
@@ -65,13 +68,13 @@ class Slideshow extends React.Component {
         );
     }
 
-    nextImage = () =>{
+    nextImage = () => {
         this.setState({ slideCount: this.state.slideCount + 1 })
-  }
+    }
 
-    previousImage = () =>{
+    previousImage = () => {
         this.setState({ slideCount: this.state.slideCount - 1 })
-  }
+    }
 
 }
 

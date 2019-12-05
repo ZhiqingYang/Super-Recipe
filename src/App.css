@@ -21,6 +21,7 @@
   color: #09d3ac;
 }
 
+
 #left-arrow{ 
   font-size: 2em;
   left: 10px;
@@ -57,3 +58,35 @@
   fill: white;
   
 }
+
+
+.history-images {
+  height: 50px;
+  width: auto;
+}
+
+.history-list {
+  list-style-type: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
