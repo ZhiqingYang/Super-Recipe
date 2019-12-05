@@ -9,7 +9,7 @@ class SearchHistory extends React.Component {
                     <div className="col-md-6">
                         <h2>Recipe Search History</h2>
                         <ul>
-                            {this.props.SearchHistory.map((search) => {
+                            {this.props.searchHistory.map((search) => {
                                 return (
                                     <li key={ search }>
                                         <a id="searchName" href="#" onClick={(e) => {
