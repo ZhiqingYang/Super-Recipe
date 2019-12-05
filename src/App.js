@@ -174,6 +174,16 @@ class App extends React.Component {
             });
         });
     }
+    readShoppingListInStorage = () => {
+        var shoppingJson = localStorage.getItem("shopping");
+        console.log('json', shoppingJson);
+        var shoppingListParsed = JSON.parse(shoppingJson) || [];
+        console.log(shoppingListParsed[0]);
+        console.log('parsed', shoppingListParsed);
+        this.setState({
+            shoppingItems: shoppingListParsed
+        });
+    }
 }
 
 export default App;
