@@ -10,23 +10,18 @@ class ShoppingList extends React.Component {
     }
 
     removeAll = () => {
-
-        localStorage.setItem("ingredients", JSON.stringify(this.state.savedLocations));
-
+        localStorage.removeItem("ingredients");
     }
-
-    handleCheckboxChange = clicked =>
-        this.setState({ checked: clicked.target.true });
-
     render() {
         return (
             <div>
-                <h2>Shopping List</h2>
+                <h2 id="shop-title">Shopping List</h2>
                 <ul>
+                  
                     {this.props.shopping.map((ingredient) => {
                         return (
-                            <li key={ingredient}>
-                                
+                            <li className="shop-box" key={ingredient}>
+
                                 <p className="ingredient">
                                     {ingredient}
                                 </p>
@@ -39,6 +34,7 @@ class ShoppingList extends React.Component {
 
                 <button id="clear-shopping-list" onClick={(e) => {
                     this.props.clearAll();
+
                 }}>
                     Clear All
                 </button>

@@ -13,7 +13,7 @@ class Categories extends Component {
         console.log('props', this.props);
         return (
             <div>
-                <h2>Healthy Categories</h2>
+                <h2 className="categories">Healthy Categories</h2>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 col-12 category">
