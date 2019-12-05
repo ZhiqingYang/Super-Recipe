@@ -5,7 +5,8 @@ class ShoppingList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: false
+            checked: false,
+            shoppingItems: []
         };
     }
 
@@ -18,19 +19,26 @@ class ShoppingList extends React.Component {
     handleCheckboxChange = clicked =>
         this.setState({ checked: clicked.target.true });
 
+    componentDidMount() {
+        console.log('shopping page mounted');
+        this.props.readShoppingListInStorage();
+    }
+
     render() {
+        console.log(this.props.ShoppingList);
         return (
+
             <div>
                 <h2>Shopping List</h2>
                 <ul>
-                    {this.props.ShoppingList.map((ingredient) => {
+                    {this.props.shoppingItems.map((ingredient) => {
                         return (
                             <li key={ingredient}>
                                 <form>
                                     <input type="checkbox" className="ingredient-checkbox" name={ingredient} onChange={(e) => {
                                         console.log(e.target.value);
                                         this.props.onChange(e.target.value);
-                                    }} /> />
+                                    }} />
                                 </form>
                                 <p className="ingredient">
                                     {ingredient}
@@ -48,7 +56,9 @@ class ShoppingList extends React.Component {
                 </button>
             </div>
         );
+
     }
+
 }
 
 export default ShoppingList;

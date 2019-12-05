@@ -29,7 +29,8 @@ class App extends React.Component {
             json: {},
             check: 0,
             searchName: "",
-            savedSearches: []
+            savedSearches: [],
+            shoppingItems: []
         };
     }
 
@@ -46,14 +47,14 @@ class App extends React.Component {
     //     });
     // }
 
-    SaveQuery = (query) => {
-        var recentSavedHistory = this.state.savedSearches.concat[query];
-        this.setState({
-            savedSearches: recentSavedHistory
-        }, () => {
-            localStorage.setItem("search-history", JSON.stringify(this.state.savedSearches));
-        });
-    }
+    // SaveQuery = (query) => {
+    //     var recentSavedHistory = this.state.savedSearches.concat[query];
+    //     this.setState({
+    //         savedSearches: recentSavedHistory
+    //     }, () => {
+    //         localStorage.setItem("search-history", JSON.stringify(this.state.savedSearches));
+    //     });
+    // }
 
 
     makeApiRequest = (query) => {
@@ -97,7 +98,7 @@ class App extends React.Component {
                         <Link to="/shoppinglist"><img display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
                         <Switch>
                             <Route path="/shoppinglist">
-                                <ShoppingList ShoppingList={[]} />
+                                <ShoppingList shoppingList={this.shoppingItems} />
                             </Route>
                         </Switch>
 
@@ -159,6 +160,17 @@ class App extends React.Component {
             });
         });
     }
+    readShoppingListInStorage = () => {
+        var shoppingJson = localStorage.getItem("shopping");
+        console.log('json', shoppingJson);
+        var shoppingListParsed = JSON.parse(shoppingJson) || [];
+        console.log();
+        console.log('parsed', shoppingListParsed);
+        this.setState({
+            shoppingItems: shoppingListParsed
+        });
+    }
+
 }
 
 export default App;
