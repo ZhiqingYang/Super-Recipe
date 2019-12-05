@@ -36,7 +36,7 @@ class Result extends React.Component {
                     })
                     }
                     {console.log("input",this.state.stage)}
-                    {this.state.stage && (<Recipe data={this.props.data.hits[0]}/>)}
+                    {this.state.stage && (<Recipe data={this.state.stage}/>)}
                     
                 </div> 
             )
