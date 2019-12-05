@@ -91,6 +91,7 @@
 .history-images {
   height: 50px;
   width: auto;
+  float: left;
 }
 
 .history-list {

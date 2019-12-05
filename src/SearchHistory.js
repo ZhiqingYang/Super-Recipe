@@ -16,7 +16,7 @@ class SearchHistory extends React.Component {
                                 return (
                                     <li key={search.recipe.label}>
                                         <p className="history-labels">{search.recipe.label}</p>
-                                        <a id="searchName" href="#" onClick={(e) => {
+                                        <a id="searchName" href="/#" onClick={(e) => {
                                             e.preventDefault();
                                             this.props.onSearchHistoryClicked(search.recipe.label);
                                         }}>
