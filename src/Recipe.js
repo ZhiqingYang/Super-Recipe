@@ -97,7 +97,7 @@ class Recipe extends React.Component {
                                 {/* Add all button */}
                                 <button type="button" className="btn btn-success btn-sm center"
                                     onClick={(e) => {
-                                        this.props.data.recipe.ingredientLines.map((content) => { this.saveLocal("shopping", content); });
+                                        this.props.data.recipe.ingredientLines.map((content) => { this.saveLocal("shopping", content);  });
                                     }
                                     }>
                             Add all in one click
@@ -133,6 +133,7 @@ class Recipe extends React.Component {
 
                 {/* Save viewHistory data and ingredients data to local storage */}
                 {this.saveLocal("viewHistory", this.props.data)}
+                
 
 
             </div>
@@ -161,7 +162,14 @@ class Recipe extends React.Component {
 
         if (JSON.stringify(pValue).indexOf(JSON.stringify(value))===-1) {
             newValue = pValue.concat([value]);
+            var save = JSON.stringify(newValue);
+            localStorage.setItem(key, save); // update local storage
+            this.props.history()
+            this.props.shopping();
 
+        } else {
+            var save = JSON.stringify(newValue);
+            localStorage.setItem(key, save); // update local storage
         }
 
         // var queriesJson = JSON.stringify(newSavedLocations);
