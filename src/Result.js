@@ -1,25 +1,51 @@
+import React from 'react';
+import Recipe from './Recipe';
+
 class Result extends React.Component {
     constructor(props) {
         super(props);
-    
+
         this.state = {
-            input : "",
-            filter : [],
-            clickCount : 0
+            stage: 0
         };
-        render = () =>{
+    }
+    
+    render = () =>{
+            var array = this.props.data.hits;
+            console.log("datatype", typeof(array));
+            console.log("data",array);
+            var a = "100";
+            array.map((content)=>{
+                console.log("img",content.recipe.image);
+            })
             return(
-                {
-                this.props.data.hits.map((recipe) =>{
+                <div>
+                    {array.map((content)=>{
+
+                        return(<div key={content.recipe.image}>
+                                    <a href="#" onClick={(e)=>{
+                                        console.log("recipe",content);
+                                        this.setState({
+                                            stage : content
+                                        });
+                                    }}>
+                                        <img src={content.recipe.image}/>
+                                        <p>{content.recipe.label}</p>
+                                    </a>
+                                </div>)
+                    })
+                    }
+                    {console.log("input",this.state.stage)}
+                    {this.state.stage && (<Recipe data={this.props.data.hits[0]}/>)}
                     
-
-                })
-                }
+                </div> 
             )
-        }
-
-
-
-        
+            
     }
 }
+
+        
+        
+
+
+export default Result;

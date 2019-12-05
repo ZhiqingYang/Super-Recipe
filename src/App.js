@@ -6,7 +6,12 @@ import Slideshow from './Slideshow';
 import SearchBar from './SearchBar';
 import chef from './chef.svg';
 import ShoppingList from './ShoppingList';
+<<<<<<< HEAD
 
+=======
+import Recipe from './Recipe';
+import Result from './Result';
+>>>>>>> 6d74a0980c8057c26f286703e9eaf3f3f15c49a9
 import {
     HashRouter as Router,
     Switch,
@@ -100,7 +105,6 @@ class App extends React.Component {
                             <Route path="/shoppinglist">
                                 <ShoppingList ShoppingList={[]} />
                             </Route>
-
                         </Switch>
 
                         <SearchBar
@@ -131,6 +135,11 @@ class App extends React.Component {
                             }}
                         />
                     </div>
+<<<<<<< HEAD
+=======
+                    {this.state.check === 1 && (<Result data={this.state.json}/>)}
+                    {this.state.check === 5 && (<Recipe data={this.state.json.hits[0]} />)}
+>>>>>>> 6d74a0980c8057c26f286703e9eaf3f3f15c49a9
                 </div>
             </Router>
 
