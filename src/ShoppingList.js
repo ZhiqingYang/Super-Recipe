@@ -5,33 +5,36 @@ class ShoppingList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: false
+            checked: false,
+            shoppingItems: []
         };
     }
 
     removeAll = () => {
-
-        localStorage.setItem("ingredients", JSON.stringify(this.state.savedLocations));
-
+        localStorage.setItem("ingredients", JSON.stringify(this.state.shoppingItems));
     }
 
-    handleCheckboxChange = clicked =>
-        this.setState({ checked: clicked.target.true });
+    // componentDidMount() {
+    //     console.log('shopping page mounted');
+    //     this.props.readShoppingListInStorage();
+    // }
 
     render() {
+        console.log(this.props.shoppingItems);
         return (
+
             <div>
                 <h2>Shopping List</h2>
                 <ul>
-                    {this.props.ShoppingList.map((ingredient) => {
+                    {this.props.shoppingList.map((ingredient) => {
                         return (
                             <li key={ingredient}>
-                                <form>
+                                {/* <form>
                                     <input type="checkbox" className="ingredient-checkbox" name={ingredient} onChange={(e) => {
                                         console.log(e.target.value);
                                         this.props.onChange(e.target.value);
-                                    }} /> />
-                                </form>
+                                    }} />
+                                </form> */}
                                 <p className="ingredient">
                                     {ingredient}
                                 </p>
@@ -41,14 +44,15 @@ class ShoppingList extends React.Component {
                 </ul>
 
                 <button id="clear-shopping-list" onClick={(e) => {
-                    // delete the things
-                    // clearing local storage for list items
+                    this.removeAll();
                 }}>
                     Clear All
                 </button>
             </div>
         );
+
     }
+
 }
 
 export default ShoppingList;

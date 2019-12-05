@@ -29,7 +29,8 @@ class App extends React.Component {
             json: {},
             check: 0,
             searchName: "",
-            savedSearches: [] // this.load()
+            savedSearches: [],
+            shoppingItems: [] // this.load()
         };
     }
     // load = () => {
@@ -51,16 +52,18 @@ class App extends React.Component {
         var queries = JSON.parse(localHistory) || [];
         // this.loadSavedQueries(this.savedLocations);
         console.log(queries[0]);
+        if (queries.length > 5) {
+            queries.shift();
+        }
         this.setState({
             savedSearches: queries
         });
+        this.readShoppingList();
     }
 
     // SaveQuery = (query) => {
     //     var recentSavedHistory = this.state.savedSearches.concat[ query ];
-    //     if (recentSavedHistory.length > 5) {
-    //         recentSavedHistory.shift();
-    //     }
+    //     
     //     this.setState({
     //         savedSearches: recentSavedHistory
     //     }, () => {
@@ -111,7 +114,9 @@ class App extends React.Component {
                         <Link to="/shoppinglist"><img display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
                         <Switch>
                             <Route path="/shoppinglist">
-                                <ShoppingList ShoppingList={[]} />
+                                {this.state.savedSearches.length > 0 && (<ShoppingList
+                                    shoppingList={this.state.shoppingItems}
+                                />)}
                             </Route>
                         </Switch>
 
@@ -125,13 +130,13 @@ class App extends React.Component {
                     </div>
                     <Slideshow />
                     <div>
-                        {console.log("HERRRREEE", this.state.savedSearches)};
+                        {console.log("HERRRREEE", this.state.shoppingItems)};
                         {this.state.savedSearches.length > 0 && (
                             <SearchHistory
                                 searchHistory={this.state.savedSearches}
-                                // onSearchHistoryClicked={(search) => {
-                                //     this.state.check === 1 && (<Recipe data={search} />)
-                                // }}
+                            // onSearchHistoryClicked={(search) => {
+                            //     this.state.check === 1 && (<Recipe data={search} />)
+                            // }}
                             />
                         )}
                     </div>
@@ -174,12 +179,14 @@ class App extends React.Component {
             });
         });
     }
-    readShoppingListInStorage = () => {
+    
+    readShoppingList() {
+        console.log("THIS");
         var shoppingJson = localStorage.getItem("shopping");
-        console.log('json', shoppingJson);
+        console.log('JSONNNNNNNNNNNNNNN', shoppingJson);
         var shoppingListParsed = JSON.parse(shoppingJson) || [];
         console.log(shoppingListParsed[0]);
-        console.log('parsed', shoppingListParsed);
+        console.log('PARSEDDDDDDDD', shoppingListParsed);
         this.setState({
             shoppingItems: shoppingListParsed
         });

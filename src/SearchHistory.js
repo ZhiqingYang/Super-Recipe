@@ -25,7 +25,7 @@ class SearchHistory extends React.Component {
                                         <a id="searchName" href="#" onClick={(e) => {
                                             e.preventDefault();
                                             // this.props.onSearchHistoryClicked(search);
-                                            <Recipe data={this.state.stage} />
+                                            // <Recipe data={this.state.stage} />
                                         }}>
                                             <img className="history-images" src={search.recipe.image} alt="recipe search" />
                                         </a>
