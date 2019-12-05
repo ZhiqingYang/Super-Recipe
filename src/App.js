@@ -132,7 +132,7 @@ class App extends React.Component {
                 <div>
 
                     <div className="App">
-                        <Link to="/"><h1>Super Recipe</h1></Link>
+                        <Link to="/"><h1 onClick={(e)=>{this.setState({check:0})}}>Super Recipe</h1></Link>
                     </div>
                     <div>
                         <Link to="/"><img display="inline-block" src={chef} height="50px" weight="50px" className="chef" alt="chef logo"
@@ -148,7 +148,7 @@ class App extends React.Component {
                             onSubmit={(query) => {
                                 this.makeApiRequest(query);
                             }} />
-                        <Link to="/shoppinglist"><img className="shop" display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
+                        <Link to="/shoppinglist"><img onClick={(e)=>{this.setState({check:2})}}className="shop" display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
                         <p>{this.state.check}</p>
                         {console.log(this.state.json)}
                         {this.state.check === 0 &&(
@@ -175,10 +175,14 @@ class App extends React.Component {
                             </Route>
                         </Switch> 
                         )}
+
+                        
                         
                     </div>
 
-
+                    {this.state.check===2 && this.state.savedSearches.length > 0 &&(
+                        <ShoppingList clearAll={this.clearAll} remove={this.removeQuery} shopping={this.state.shoppingItems}/>
+                    )}
                     {this.state.check === 1 && (<Result data={this.state.json} onClick={this.resultOnClick} />)}
                     {this.state.check === 3 && (<Recipe data={this.state.recipe} history={this.loadSearchHistory} shopping={this.loadShoppingList}/>)}
                 </div>
@@ -210,6 +214,24 @@ class App extends React.Component {
 
             });
         });
+    }
+    removeQuery = (query) => {
+        var  data = this.state.shoppingItems;
+        data = data.filter( (content) =>{
+            return query !== content;
+        });
+        this.saveLocal(data);
+    }
+    clearAll = () => {
+        var data = [];
+        this.saveLocal(data);
+    }
+    saveLocal = (data) => {
+        this.setState({
+            shoppingItems: data
+        });
+        data = JSON.stringify(data);
+        localStorage.setItem("shopping", data);
     }
 
     resultOnClick = (data) => {

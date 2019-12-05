@@ -23,26 +23,22 @@ class ShoppingList extends React.Component {
             <div>
                 <h2>Shopping List</h2>
                 <ul>
-                    {this.props.ShoppingList.map((ingredient) => {
+                    {this.props.shopping.map((ingredient) => {
                         return (
                             <li key={ingredient}>
-                                <form>
-                                    <input type="checkbox" className="ingredient-checkbox" name={ingredient} onChange={(e) => {
-                                        console.log(e.target.value);
-                                        this.props.onChange(e.target.value);
-                                    }} /> />
-                                </form>
+                                
                                 <p className="ingredient">
                                     {ingredient}
                                 </p>
+                                <a href="#" onClick={(e)=>{this.props.remove(ingredient)}}>remove</a>
+
                             </li>
                         );
                     })}
                 </ul>
 
                 <button id="clear-shopping-list" onClick={(e) => {
-                    // delete the things
-                    // clearing local storage for list items
+                    this.props.clearAll();
                 }}>
                     Clear All
                 </button>
