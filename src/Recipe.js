@@ -18,13 +18,13 @@ class Recipe extends React.Component {
     }
 
 
-    //Get the nutrition api result in Post method. 
+    // Get the nutrition api result in Post method.
     makeApiRequest = () => {
 
         var jsonDict = {
             "title": this.props.data.label,
             "ingr": this.props.data.recipe.ingredientLines
-        }
+        };
         var url = "https://api.edamam.com/api/nutrition-details?app_id=" + appid + "&app_key=" + apiKey;
         var promise = fetch(url, {
             method: 'post',
@@ -33,7 +33,7 @@ class Recipe extends React.Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(jsonDict)
-        })
+        });
         promise.then((response) => {
             response.json().then((data) => {
                 if (response.status === 200) {
@@ -47,77 +47,103 @@ class Recipe extends React.Component {
                         check: 0
                     });
                 }
-            })
-        })
+            });
+        });
     }
 
     render = () => {
         return (
 
             <div>
-                {/* debug */}
-                {/* {console.log("label", this.state.recipeData.totalNutrients)}
-                {console.log("1")} */}
-
                 {/* Get nutrition result */}
                 {this.state.check === 0 && this.makeApiRequest()}
                 {/* Large Image */}
-                <img src={this.props.data.recipe.image} />
+                <img className="centerImage" src={this.props.data.recipe.image} alt="recipe" />
                 {/* Title */}
-                <h2>{this.props.data.recipe.label}</h2>
-                {/* Time and Yield */}
-                <div>
-                    <p>Time: {this.props.data.recipe.totalTime} mins</p>
-                    <p>Yield: {this.props.data.recipe.yield} serving</p>
+                <h2 className="recipe-name"> {this.props.data.recipe.label}</h2>
+
+                <div className="contaniner">
+                    <div className="row">
+                        <div className="col-md-6 col-12">
+                            {/* Time and Yield */}
+                            <div className="recipe-first">
+                                <p>Time: {this.props.data.recipe.totalTime} mins</p>
+                                <p>Yield: {this.props.data.recipe.yield} serving</p>
+                            </div>
+
+
+                            {/* Instruction button */}
+                            <a href={this.props.data.recipe.url}>
+                                <button type="button" className="btn btn-primary btn-lg instruction"> Instruction</button>
+                            </a>
+
+
+                            {/* Ingredients List with Add button */}
+
+                            <div className="ingredients">
+                                <h3>Ingredients</h3>
+                                {this.props.data.recipe.ingredientLines.map((content) => {
+                                    var result = "";
+                                    return (
+                                        <ul className="list-group-flush">
+                                            <li key={content} className="list-group list-group-item">
+
+                                                {content}
+                                                <a href="/#" onClick={(e) => { this.saveLocal("shopping", content); }}>  add</a></li>
+                                        </ul>
+
+                                    );
+                                })}
+                                {/* Add all button */}
+                                <button type="button" className="btn btn-success btn-sm center"
+                                    onClick={(e) => {
+                                        this.props.data.recipe.ingredientLines.map((content) => { this.saveLocal("shopping", content); });
+                                    }
+                                    }>
+                            Add all in one click
+                                </button>
+
+                            </div>
+
+
+                        </div>
+
+                        <div className="col-md-6 col-12">
+                            {/* nutrition */}
+                            <div className="nutrition">
+                                <h3>Nutrition Analysis</h3>
+                                {this.state.key.map((content) => {
+                                    var table = this.state.recipeData.totalNutrients[content];
+                                    return (
+                                        <ul className="list-group-flush">
+                                            <li key={content} className="list-group list-group-item">
+                                                {table.label} : {table.quantity}{table.unit}
+                                                {/* {this.state.json.totalNutrients.content.quantity}
+    {this.state.json.totalNutrients.content.unit} */}
+                                            </li>
+                                        </ul>
+                                    );
+                                })}
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
-                {/* Ingredients List with Add button */}
-                <div>
-                    <p>Ingredients</p>
-                    {this.props.data.recipe.ingredientLines.map((content) => {
-                        var result = "";
-                        return (
-                            <li key={content}>{content} <a href="#" onClick={(e) => { this.saveLocal("shopping", content) }}>add</a></li>
-                        )
-                    })}
-                    {/* Add all button */}
-                    <button onClick={(e) => {
-                        this.props.data.recipe.ingredientLines.map((content) => { this.saveLocal("shopping", content); });
-                    }
-                    }>
-                        Add all in one click
-                </button>
 
-                    {/* Instruction button */}
-                    <a href={this.props.data.recipe.url}>
-                        <button>Instruction</button>
-                    </a>
+                {/* Save viewHistory data and ingredients data to local storage */}
+                {this.saveLocal("viewHistory", this.props.data)}
 
-                    {/* nutrition */}
-                    {this.state.key.map((content) => {
-                        var table = this.state.recipeData.totalNutrients[content]
-                        return (
-                            <li key={content}>
-                                {table.label} quantity:{table.quantity}{table.unit}
-                                {/* {this.state.json.totalNutrients.content.quantity}
-                    {this.state.json.totalNutrients.content.unit} */}
-                            </li>
-                        )
-                    })}
 
-                    {/* Save viewHistory data and ingredients data to local storage */}
-                    {this.saveLocal("viewHistory", this.props.data)}
-                </div>
             </div>
 
 
-
-        )
+        );
     }
 
 
     // Save data to local storage according to the key and value
-    //check if duplicate and do not allow it 
+    // check if duplicate and do not allow it
     saveLocal = (key, value) => {
         // try {
         //     var pSearches = localStorage.getItem(key)
@@ -132,8 +158,10 @@ class Recipe extends React.Component {
         var pValue = JSON.parse(pSearches);
         console.log("get", pValue);
         var newValue = pValue;
+
         if (JSON.stringify(pValue).indexOf(JSON.stringify(value))===-1) {
             newValue = pValue.concat([value]);
+
         }
 
         // var queriesJson = JSON.stringify(newSavedLocations);

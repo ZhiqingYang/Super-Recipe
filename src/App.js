@@ -149,6 +149,7 @@ class App extends React.Component {
                         
                     </div>
 
+
                     {this.state.check === 1 && (<Result data={this.state.json} onClick={this.resultOnClick} />)}
                     {this.state.check === 3 && (<Recipe data={this.state.recipe}/>)}
                 </div>
