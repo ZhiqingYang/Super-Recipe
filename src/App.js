@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import SearchHistory from './SearchHistory';
 import Categories from './Categories';
-import shopping from './shopping-cart.svg'
+import shopping from './shopping-cart.svg';
 import Slideshow from './Slideshow';
 import SearchBar from './SearchBar';
 import chef from './chef.svg';
@@ -60,7 +60,7 @@ class App extends React.Component {
         var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=3";
         var fetchPromise = fetch(url);
         fetchPromise.then((response) => {
-            console.log("debug")
+            console.log("debug");
             response.json().then((data) => {
                 if (response.status === 200) {
                     this.setState({
@@ -93,7 +93,7 @@ class App extends React.Component {
                                     check: 0
                                 });
                             }} />
-                        
+
                         <Link to="/shoppinglist"><img display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
                         <Switch>
                             <Route path="/shoppinglist">
@@ -147,20 +147,15 @@ class App extends React.Component {
                 console.log(data);
                 if (response.status === 200) {
                     this.setState({
-                        recipeCountFrom: data.from,
-                        recipeCountTo: data.to
-                    }, () => {
-                        console.log(this.state.recipeCountFrom, this.state.recipeCountTo);
-                    });
-                    this.setState({
-                        recipeSelected: Math.round(Math.random() * (this.state.recipeCountTo - this.state.recipeCountFrom) + this.state.recipeCountFrom, 0)
-                    }, () => {
-                        console.log(this.state.recipeSelected);
-                        // make api request to pull up result
+                        json: data,
+                        check: 1
                     });
                 } else {
-                    console.error('error', data);
+                    this.setState({
+                        check: 0
+                    });
                 }
+
             });
         });
     }
