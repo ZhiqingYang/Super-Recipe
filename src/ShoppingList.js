@@ -33,6 +33,7 @@ class ShoppingList extends React.Component {
                 </ul>
 
                 <button id="clear-shopping-list" className="btn btn-primary" onClick={(e) => {
+
                     this.props.clearAll();
 
                 }}>
