@@ -8,6 +8,7 @@ import SearchBar from './SearchBar';
 import chef from './chef.svg';
 import ShoppingList from './ShoppingList';
 import Recipe from './Recipe';
+import Result from './Result';
 import {
     HashRouter as Router,
     Switch,
@@ -98,7 +99,6 @@ class App extends React.Component {
                             <Route path="/shoppinglist">
                                 <ShoppingList ShoppingList={[]} />
                             </Route>
-
                         </Switch>
 
                         <SearchBar
@@ -128,7 +128,8 @@ class App extends React.Component {
                             }}
                         />
                     </div>
-                    {this.state.check === 1 && (<Recipe data={this.state.json.hits[0]} />)}
+                    {this.state.check === 1 && (<Result data={this.state.json}/>)}
+                    {this.state.check === 5 && (<Recipe data={this.state.json.hits[0]} />)}
                 </div>
             </Router>
         );
