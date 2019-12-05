@@ -29,8 +29,8 @@ class App extends React.Component {
             json: {},
             check: 0,
             searchName: "",
-            savedSearches: [],
-            shoppingItems: [] // this.load()
+            savedSearches: [], // this.load()
+            recipe:0
         };
     }
     // load = () => {
@@ -156,7 +156,7 @@ class App extends React.Component {
                             }} />
                         <p>{this.state.check}</p>
                         {console.log(this.state.json)}
-
+                        {this.state.check === 0 &&(
                         <Switch>
                             <Route exact={true} path="/">
                                 <Slideshow />
@@ -173,14 +173,17 @@ class App extends React.Component {
                                     {this.state.savedSearches.length > 0 && (
                                         <SearchHistory
                                             searchHistory={this.state.savedSearches}
-                                            onSearchHistoryClicked={() => {
-
+                                            onSearchHistoryClicked={(search) => {
+                                                console.log('clicked on history for', search);
+                                                this.makeApiRequest(search);
                                             }}
                                         />
                                     )}
                                 </div>
                             </Route>
-                        </Switch>
+                        </Switch> 
+                        )}
+                        
                     </div>
                     <Slideshow />
                     <div>
@@ -203,7 +206,9 @@ class App extends React.Component {
                         />
                     </div>
 
-                    {this.state.check === 1 && (<Result data={this.state.json} />)}
+
+                    {this.state.check === 1 && (<Result data={this.state.json} onClick={this.resultOnClick} />)}
+                    {this.state.check === 3 && (<Recipe data={this.state.recipe}/>)}
                 </div>
             </Router>
         );
@@ -232,6 +237,12 @@ class App extends React.Component {
 
             });
         });
+    }
+    resultOnClick = (data) => {
+        this.setState({
+            check: 3,
+            recipe: data
+        })
     }
 }
 
