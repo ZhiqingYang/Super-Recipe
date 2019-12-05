@@ -53,45 +53,16 @@ class App extends React.Component {
         var queries = JSON.parse(localHistory) || [];
         // this.loadSavedQueries(this.savedLocations);
         console.log(queries[0]);
-        if (queries.length > 5) {
-            queries.shift();
-        }
         this.setState({
             savedSearches: queries
-        });
-        this.loadShoppingList();
-    }
-
-    loadSearchHistory() {
-        console.log("MOUNTED");
-        var localHistory = localStorage.getItem("viewHistory");
-        console.log(localHistory);
-        var queries = JSON.parse(localHistory) || [];
-        // this.loadSavedQueries(this.savedLocations);
-        console.log(queries[0]);
-        if (queries.length > 5) {
-            queries.shift();
-        }
-        this.setState({
-            savedSearches: queries
-        });
-    }
-
-    loadShoppingList() {
-        console.log("THIS");
-        var shoppingJson = localStorage.getItem("shopping");
-        console.log('JSONNNNNNNNNNNNNNN', shoppingJson);
-        var shoppingListParsed = JSON.parse(shoppingJson) || [];
-        console.log(shoppingListParsed[0]);
-        console.log('PARSEDDDDDDDD', shoppingListParsed);
-        this.setState({
-            shoppingItems: shoppingListParsed
         });
     }
 
     // SaveQuery = (query) => {
     //     var recentSavedHistory = this.state.savedSearches.concat[ query ];
-    //     
+    //     if (recentSavedHistory.length > 5) {
+    //         recentSavedHistory.shift();
+    //     }
     //     this.setState({
     //         savedSearches: recentSavedHistory
     //     }, () => {
@@ -127,7 +98,7 @@ class App extends React.Component {
     }
 
     makeApiRequest = (query) => {
-        var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=3";
+        var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=16";
         var fetchPromise = fetch(url);
         fetchPromise.then((response) => {
             console.log("debug");
@@ -172,20 +143,12 @@ class App extends React.Component {
                             }} />
                         </Link>
 
-                        <Link to="/shoppinglist"><img display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
-                        <Switch>
-                            <Route path="/shoppinglist">
-                                {this.state.savedSearches.length > 0 && (<ShoppingList
-                                    shoppingList={this.state.shoppingItems}
-                                />)}
-                            </Route>
-                        </Switch>
-
                         <SearchBar
                             placeholderText="chicken"
                             onSubmit={(query) => {
                                 this.makeApiRequest(query);
                             }} />
+                        <Link to="/shoppinglist"><img className="shop" display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
                         <p>{this.state.check}</p>
                         {console.log(this.state.json)}
                         {this.state.check === 0 &&(
@@ -214,32 +177,13 @@ class App extends React.Component {
                         )}
                         
                     </div>
-                    <Slideshow />
-                    <div>
-                        {console.log("HERRRREEE", this.state.shoppingItems)};
-                        {this.state.savedSearches.length > 0 && (
-                            <SearchHistory
-                                searchHistory={this.state.savedSearches}
-                            // onSearchHistoryClicked={(search) => {
-                            //     this.state.check === 1 && (<Recipe data={search} />)
-                            // }}
-                            />
-                        )}
-                    </div>
-                    <div>
-                        <Categories
-                            onCategoryClicked={(query) => {
-                                console.log("category clicked", query);
-                                this.makeApiRequestCategory(query);
-                            }}
-                        />
-                    </div>
 
 
                     {this.state.check === 1 && (<Result data={this.state.json} onClick={this.resultOnClick} />)}
                     {this.state.check === 3 && (<Recipe data={this.state.recipe} history={this.loadSearchHistory} shopping={this.loadShoppingList}/>)}
                 </div>
             </Router>
+
         );
     }
 
