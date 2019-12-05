@@ -97,16 +97,18 @@ class App extends React.Component {
 
             <Router>
                 <div>
+
                     <div className="App">
-                        <h1>Super Recipe</h1>
+                        <Link to="/"><h1>Super Recipe</h1></Link>
                     </div>
                     <div>
-                        <img display="inline-block" src={chef} height="50px" weight="50px" className="chef" alt="chef logo"
+                        <Link to="/"><img display="inline-block" src={chef} height="50px" weight="50px" className="chef" alt="chef logo"
                             onClick={() => {
                                 this.setState({
                                     check: 0
                                 });
                             }} />
+                        </Link>
 
                         <Link to="/shoppinglist"><img display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
                         <Switch>
@@ -122,27 +124,33 @@ class App extends React.Component {
                             }} />
                         <p>{this.state.check}</p>
                         {console.log(this.state.json)}
-                    </div>
-                    <Slideshow />
-                    <div>
-                        {console.log("HERRRREEE", this.state.savedSearches)};
-                        {this.state.savedSearches.length > 0 && (
-                            <SearchHistory
-                                searchHistory={this.state.savedSearches}
-                                onSearchHistoryClicked={() => {
 
-                                }}
-                            />
-                        )}
+                        <Switch>
+                            <Route exact={true} path="/">
+                                <Slideshow />
+                                <div>
+                                    <Categories
+                                        onCategoryClicked={(query) => {
+                                            console.log("category clicked", query);
+                                            this.makeApiRequestCategory(query);
+                                        }}
+                                    />
+                                </div>
+                                <div>
+                                    {console.log("HERRRREEE", this.state.savedSearches)};
+                                    {this.state.savedSearches.length > 0 && (
+                                        <SearchHistory
+                                            searchHistory={this.state.savedSearches}
+                                            onSearchHistoryClicked={() => {
+
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </Route>
+                        </Switch>
                     </div>
-                    <div>
-                        <Categories
-                            onCategoryClicked={(query) => {
-                                console.log("category clicked", query);
-                                this.makeApiRequestCategory(query);
-                            }}
-                        />
-                    </div>
+
                     {this.state.check === 1 && (<Result data={this.state.json} />)}
                 </div>
             </Router>

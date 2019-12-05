@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Recipe from './Recipe';
 
@@ -17,7 +18,7 @@ class Result extends React.Component {
         var a = "100";
         array.map((content) => {
             console.log("img", content.recipe.image);
-        })
+        });
         return (
             <div>
                 {array.map((content) => {
@@ -39,13 +40,10 @@ class Result extends React.Component {
                 {this.state.stage && (<Recipe data={this.state.stage} />)}
 
             </div>
-        )
+        );
 
     }
 }
-
-
-
 
 
 export default Result;
