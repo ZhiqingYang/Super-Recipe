@@ -141,8 +141,9 @@ class App extends React.Component {
                                     {this.state.savedSearches.length > 0 && (
                                         <SearchHistory
                                             searchHistory={this.state.savedSearches}
-                                            onSearchHistoryClicked={() => {
-
+                                            onSearchHistoryClicked={(search) => {
+                                                console.log('clicked on history for', search);
+                                                this.makeApiRequest(search);
                                             }}
                                         />
                                     )}
