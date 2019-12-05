@@ -20,3 +20,40 @@
 .App-link {
   color: #09d3ac;
 }
+
+#left-arrow{ 
+  font-size: 2em;
+  left: 10px;
+  color: white; 
+  position: absolute;
+  opacity: 70%; 
+  top: 50%;
+}
+
+#right-arrow { 
+  font-size: 2em;
+  right: 10px;
+  color: white;
+  opacity: 70%;
+  position: absolute; 
+  top: 50%;
+}
+
+.slideshow {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  
+  
+}
+
+.btn {
+  display:block;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid black;
+  fill: white;
+  
+}
