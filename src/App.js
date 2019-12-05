@@ -6,12 +6,8 @@ import Slideshow from './Slideshow';
 import SearchBar from './SearchBar';
 import chef from './chef.svg';
 import ShoppingList from './ShoppingList';
-<<<<<<< HEAD
-
-=======
 import Recipe from './Recipe';
 import Result from './Result';
->>>>>>> 6d74a0980c8057c26f286703e9eaf3f3f15c49a9
 import {
     HashRouter as Router,
     Switch,
@@ -32,22 +28,23 @@ class App extends React.Component {
             json: {},
             check: 0,
             searchName: "",
-            savedSearches: []
+            savedSearches: this.load()
         };
     }
-
-
-    componentDidMount() {
-        console.log("MOUNTED");
+    load = () => {
         var localHistory = localStorage.getItem("viewHistory");
-        console.log(localHistory);
+        console.log("history", localHistory);
         var queries = JSON.parse(localHistory) || [];
         console.log(queries[0]);
-        this.setState({
-            savedSearches: queries
-        }, () => {
-            console.log(this.savedSearches);
-        });
+        // this.setState({
+        //     savedSearches: queries
+        // }, () => {
+        //     console.log("Data TEST", this.savedSearches);
+        // });
+        return (queries);
+    }
+    componentDidMount() {
+        console.log("THISSSSSSSS", this.state.savedSearches);
     }
 
     // SaveQuery = (query) => {
@@ -116,17 +113,17 @@ class App extends React.Component {
                         {console.log(this.state.json)}
                     </div>
                     <Slideshow />
-                    {/* <div>
+                    <div>
+                        {console.log("HERRRREEE", this.state.savedSearches)};
                         {this.state.savedSearches.length > 0 && (
                             <SearchHistory
-
-                                searchHistory={this.state.searchHistory}
+                                searchHistory={this.state.savedSearches[]}
                                 onSearchHistoryClicked={() => {
 
                                 }}
                             />
                         )}
-                    </div> */}
+                    </div>
                     <div>
                         <Categories
                             onCategoryClicked={(query) => {
@@ -135,11 +132,8 @@ class App extends React.Component {
                             }}
                         />
                     </div>
-<<<<<<< HEAD
-=======
-                    {this.state.check === 1 && (<Result data={this.state.json}/>)}
+                    {this.state.check === 1 && (<Result data={this.state.json} />)}
                     {this.state.check === 5 && (<Recipe data={this.state.json.hits[0]} />)}
->>>>>>> 6d74a0980c8057c26f286703e9eaf3f3f15c49a9
                 </div>
             </Router>
 

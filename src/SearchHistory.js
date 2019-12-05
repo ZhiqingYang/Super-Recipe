@@ -11,12 +11,13 @@ class SearchHistory extends React.Component {
                         <ul>
                             {this.props.searchHistory.map((search) => {
                                 return (
-                                    <li key={ search }>
+                                    <li key={search.recipe.label}>
+                                        <img src={search.recipe.image} alt="recipe search" />
                                         <a id="searchName" href="#" onClick={(e) => {
                                             e.preventDefault();
                                             this.props.onSearchHistoryClicked(search);
                                         }}>
-                                            { search }
+                                            {search}
                                         </a>
                                     </li>
                                 );
