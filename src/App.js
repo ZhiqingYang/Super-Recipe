@@ -129,9 +129,9 @@ class App extends React.Component {
                         {this.state.savedSearches.length > 0 && (
                             <SearchHistory
                                 searchHistory={this.state.savedSearches}
-                                onSearchHistoryClicked={() => {
-
-                                }}
+                                // onSearchHistoryClicked={(search) => {
+                                //     this.state.check === 1 && (<Recipe data={search} />)
+                                // }}
                             />
                         )}
                     </div>
