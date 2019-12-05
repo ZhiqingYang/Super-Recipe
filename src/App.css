@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Calistoga&display=swap');
+
 .App {
   text-align: center;
 }
@@ -76,17 +78,24 @@
 
 }
 
+#shop-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
+.shop-box { 
+  list-style-type: circle;
 
+}
 
 .history-images {
   height: 50px;
   width: auto;
+  float: left;
+  border-radius: 50%;
 }
 
-.history-list {
-  list-style-type: none;
-}
+
 
 
 .recipe-first {
@@ -116,6 +125,10 @@ h3 {
 h4 {
   font: bold;
   font-size: 80%;
+}
+
+.ingredient {
+  font-family: Calistoga, sans-serif;
 }
 
 .ingredients {
@@ -156,6 +169,26 @@ h4 {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.history-list {
+  border: 0.5px solid lightgrey;
+  list-style-type: none;
+  width: 50%;
+  border-right: none;
+}
+
+.history-labels {
+  margin-top: 30px;
+  margin-bottom: 0;
+  margin-left: 30px;
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+#history-title{
+  text-align: center;
+  padding-left: 30px;
 }
 
 .categories {
