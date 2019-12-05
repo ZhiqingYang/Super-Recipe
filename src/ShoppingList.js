@@ -17,19 +17,24 @@ class ShoppingList extends React.Component {
             <div>
                 <h2 id="shop-title">Shopping List</h2>
                 <ul>
-                    {this.props.shoppingList.map((ingredient) => {
+                  
+                    {this.props.shopping.map((ingredient) => {
                         return (
                             <li className="shop-box" key={ingredient}>
+
                                 <p className="ingredient">
                                     {ingredient}
                                 </p>
+                                <a href="#" onClick={(e)=>{this.props.remove(ingredient)}}>remove</a>
+
                             </li>
                         );
                     })}
                 </ul>
 
                 <button id="clear-shopping-list" onClick={(e) => {
-                    this.removeAll();
+                    this.props.clearAll();
+
                 }}>
                     Clear All
                 </button>
