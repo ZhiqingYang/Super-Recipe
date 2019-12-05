@@ -30,8 +30,8 @@ class App extends React.Component {
             check: 0,
             searchName: "",
             savedSearches: 0, // this.load()
-            shoppingItems:0,
-            recipe:0
+            shoppingItems: 0,
+            recipe: 0
         };
     }
     // load = () => {
@@ -119,10 +119,10 @@ class App extends React.Component {
     }
 
     render = () => {
-        if (this.state.savedSearches === 0){
+        if (this.state.savedSearches === 0) {
             this.loadSearchHistory();
         }
-        if (this.state.shoppingItems === 0){
+        if (this.state.shoppingItems === 0) {
             this.loadShoppingList();
         }
 
@@ -132,7 +132,7 @@ class App extends React.Component {
                 <div>
 
                     <div className="App">
-                        <Link to="/"><h1 onClick={(e)=>{this.setState({check:0})}}>Super Recipe</h1></Link>
+                        <Link to="/"><h1 onClick={(e)=>{this.setState({check: 0});}}>Super Recipe</h1></Link>
                     </div>
                     <div>
                         <Link to="/"><img display="inline-block" src={chef} height="50px" weight="50px" className="chef" alt="chef logo"
@@ -148,39 +148,38 @@ class App extends React.Component {
                             onSubmit={(query) => {
                                 this.makeApiRequest(query);
                             }} />
-                        <Link to="/shoppinglist"><img onClick={(e)=>{this.setState({check:2})}}className="shop" display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
-                        <p>{this.state.check}</p>
+                        <Link to="/shoppinglist"><img onClick={(e)=>{this.setState({check: 2});}}className="shop" display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
+                        {/* <p>{this.state.check}</p> */}
                         {console.log(this.state.json)}
-                        {this.state.check === 0 &&(
-                        <Switch>
-                            <Route exact={true} path="/">
-                                <Slideshow />
-                                <div>
-                                    <Categories
-                                        onCategoryClicked={(query) => {
-                                            console.log("category clicked", query);
-                                            this.makeApiRequestCategory(query);
-                                        }}
-                                    />
-                                </div>
-                                <div>
-                                    {console.log("HERRRREEE", this.state.savedSearches)};
-                                    {this.state.savedSearches.length > 0 && (
-                                        <SearchHistory
-                                            searchHistory={this.state.savedSearches}
-                                            onClick={this.resultOnClick}
+                        {this.state.check === 0 && (
+                            <Switch>
+                                <Route exact={true} path="/">
+                                    <Slideshow />
+                                    <div>
+                                        <Categories
+                                            onCategoryClicked={(query) => {
+                                                console.log("category clicked", query);
+                                                this.makeApiRequestCategory(query);
+                                            }}
                                         />
-                                    )}
-                                </div>
-                            </Route>
-                        </Switch> 
+                                    </div>
+                                    <div>
+                                        {console.log("HERRRREEE", this.state.savedSearches)};
+                                        {this.state.savedSearches.length > 0 && (
+                                            <SearchHistory
+                                                searchHistory={this.state.savedSearches}
+                                                onClick={this.resultOnClick}
+                                            />
+                                        )}
+                                    </div>
+                                </Route>
+                            </Switch>
                         )}
 
-                        
-                        
+
                     </div>
 
-                    {this.state.check===2 && this.state.savedSearches.length > 0 &&(
+                    {this.state.check === 2 && this.state.savedSearches.length > 0 && (
                         <ShoppingList clearAll={this.clearAll} remove={this.removeQuery} shopping={this.state.shoppingItems}/>
                     )}
                     {this.state.check === 1 && (<Result data={this.state.json} onClick={this.resultOnClick} />)}
@@ -230,15 +229,15 @@ class App extends React.Component {
         this.setState({
             shoppingItems: data
         });
-        data = JSON.stringify(data);
-        localStorage.setItem("shopping", data);
+        var item = JSON.stringify(data);
+        localStorage.setItem("shopping", item);
     }
 
     resultOnClick = (data) => {
         this.setState({
             check: 3,
             recipe: data
-        })
+        });
     }
 }
 
