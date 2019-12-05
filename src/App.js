@@ -16,11 +16,11 @@ import {
     Link
 } from "react-router-dom";
 
-var recipeSearchAppId = "6cd02485";
-var recipeSearchAppKey = "c3b84ef36f4a78721bdf2ecc191bde3a";
-var appid = "6cd02485";
-var apiKey = "c3b84ef36f4a78721bdf2ecc191bde3a";
 
+var recipeSearchAppId = "9a38d544";
+var recipeSearchAppKey = "2a69c4453a2b9bb2e8e8658454f837f4";
+var appid = "9a38d544";
+var apiKey = "2a69c4453a2b9bb2e8e8658454f837f4";
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -29,31 +29,44 @@ class App extends React.Component {
             json: {},
             check: 0,
             searchName: "",
-            savedSearches: []
+            savedSearches: [] // this.load()
         };
     }
-
-
-    // componentDidMount() {
-    //     console.log("MOUNTED");
-    //     var localHistory = localStorage.getItem("weather-queries");
-    //     console.log(localHistory);
+    // load = () => {
+    //     var localHistory = localStorage.getItem("viewHistory");
+    //     console.log("history", localHistory);
     //     var queries = JSON.parse(localHistory) || [];
-    //     // this.loadSavedQueries(this.savedLocations);
     //     console.log(queries[0]);
-    //     this.setState({
-    //         savedLocations: queries
-    //     });
+    //     // this.setState({
+    //     //     savedSearches: queries
+    //     // }, () => {
+    //     //     console.log("Data TEST", this.savedSearches);
+    //     // });
+    //     return (queries);
     // }
-
-    SaveQuery = (query) => {
-        var recentSavedHistory = this.state.savedSearches.concat[query];
+    componentDidMount() {
+        console.log("MOUNTED");
+        var localHistory = localStorage.getItem("viewHistory");
+        console.log(localHistory);
+        var queries = JSON.parse(localHistory) || [];
+        // this.loadSavedQueries(this.savedLocations);
+        console.log(queries[0]);
         this.setState({
-            savedSearches: recentSavedHistory
-        }, () => {
-            localStorage.setItem("search-history", JSON.stringify(this.state.savedSearches));
+            savedSearches: queries
         });
     }
+
+    // SaveQuery = (query) => {
+    //     var recentSavedHistory = this.state.savedSearches.concat[ query ];
+    //     if (recentSavedHistory.length > 5) {
+    //         recentSavedHistory.shift();
+    //     }
+    //     this.setState({
+    //         savedSearches: recentSavedHistory
+    //     }, () => {
+    //         localStorage.setItem("search-history", JSON.stringify(this.state.savedSearches));
+    //     });
+    // }
 
 
     makeApiRequest = (query) => {
@@ -78,6 +91,7 @@ class App extends React.Component {
     }
 
     render = () => {
+
 
         return (
 
@@ -111,11 +125,12 @@ class App extends React.Component {
                     </div>
                     <Slideshow />
                     <div>
+                        {console.log("HERRRREEE", this.state.savedSearches)};
                         {this.state.savedSearches.length > 0 && (
                             <SearchHistory
-                                searchHistory={this.state.searchHistory}
-                                onSearchHistoryClicked={(search) => {
-                                // this.makeRecipeQuery(search);
+                                searchHistory={this.state.savedSearches}
+                                onSearchHistoryClicked={() => {
+
                                 }}
                             />
                         )}
@@ -128,10 +143,10 @@ class App extends React.Component {
                             }}
                         />
                     </div>
-                    {this.state.check === 1 && (<Result data={this.state.json}/>)}
-                    {this.state.check === 5 && (<Recipe data={this.state.json.hits[0]} />)}
+                    {this.state.check === 1 && (<Result data={this.state.json} />)}
                 </div>
             </Router>
+
         );
     }
 
