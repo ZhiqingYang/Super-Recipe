@@ -13,14 +13,14 @@ class SearchBar extends React.Component {
     }
     render = () => {
         return (
-            
-            
-                <form id = "search-form"
-                    onSubmit = {(e) => {
-                        e.preventDefault();
-                        this.props.onSubmit(this.state.input);
-                    }}
-                >
+
+
+            <form id = "search-form"
+                onSubmit = {(e) => {
+                    e.preventDefault();
+                    this.props.onSubmit(this.state.input);
+                }}
+            >
                 <div>
                     <input
                         className = "form-control"
@@ -35,9 +35,9 @@ class SearchBar extends React.Component {
                     />
                     <button className="btn btn-primary" type="submit">Search</button>
                 </div>
-                    
-                </form>
-            
+
+            </form>
+
         );
 
     }
