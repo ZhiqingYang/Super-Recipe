@@ -41,16 +41,6 @@ class Categories extends Component {
                         <div className="col-md-6 col-12 category">
                             <a href="#" className="category-name" onClick={(e) => {
                                 e.preventDefault();
-                                console.log("high fiber clicked");
-                                this.props.onCategoryClicked("high-fiber");
-                            }}>
-                                <h3>High Fiber</h3>
-                                <img className="category-image img-thumbnail" src={highFiberImg} alt="High Fiber" />
-                            </a>
-                        </div>
-                        <div className="col-md-6 col-12 category">
-                            <a href="#" className="category-name" onClick={(e) => {
-                                e.preventDefault();
                                 console.log("low-fat clicked");
                                 this.props.onCategoryClicked("low-fat");
                             }}>
@@ -58,8 +48,6 @@ class Categories extends Component {
                                 <img className="category-image img-thumbnail" src={lowFatImg} alt="Low Fat" />
                             </a>
                         </div>
-                    </div>
-                    <div className="row">
                         <div className="col-md-6 col-12 category">
                             <a href="#" className="category-name" onClick={(e) => {
                                 e.preventDefault();
@@ -68,16 +56,6 @@ class Categories extends Component {
                             }}>
                                 <h3>Low Carb</h3>
                                 <img className="category-image img-thumbnail" src={lowCarbImg} alt="Low Carb" />
-                            </a>
-                        </div>
-                        <div className="col-md-6 col-12 category">
-                            <a href="#" className="category-name" onClick={(e) => {
-                                e.preventDefault();
-                                console.log("low-sodium clicked");
-                                this.props.onCategoryClicked("low-sodium");
-                            }}>
-                                <h3>Low Sodium</h3>
-                                <img className="category-image img-thumbnail" src={lowSodiumImg} alt="Low Sodium" />
                             </a>
                         </div>
                     </div>
