@@ -29,7 +29,8 @@ class App extends React.Component {
             json: {},
             check: 0,
             searchName: "",
-            savedSearches: [], // this.load()
+            savedSearches: 0, // this.load()
+            shoppingItems:0,
             recipe:0
         };
     }
@@ -98,6 +99,32 @@ class App extends React.Component {
     //     });
     // }
 
+    loadSearchHistory = () => {
+        console.log("MOUNTED");
+        var localHistory = localStorage.getItem("viewHistory");
+        console.log(localHistory);
+        var queries = JSON.parse(localHistory) || [];
+        // this.loadSavedQueries(this.savedLocations);
+        console.log(queries[0]);
+        if (queries.length > 5) {
+            queries.shift();
+        }
+        this.setState({
+            savedSearches: queries
+        });
+    }
+
+    loadShoppingList = () => {
+        console.log("THIS");
+        var shoppingJson = localStorage.getItem("shopping");
+        console.log('JSONNNNNNNNNNNNNNN', shoppingJson);
+        var shoppingListParsed = JSON.parse(shoppingJson) || [];
+        console.log(shoppingListParsed[0]);
+        console.log('PARSEDDDDDDDD', shoppingListParsed);
+        this.setState({
+            shoppingItems: shoppingListParsed
+        });
+    }
 
     makeApiRequest = (query) => {
         var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=3";
@@ -121,7 +148,12 @@ class App extends React.Component {
     }
 
     render = () => {
-
+        if (this.state.savedSearches === 0){
+            this.loadSearchHistory();
+        }
+        if (this.state.shoppingItems === 0){
+            this.loadShoppingList();
+        }
 
         return (
 
@@ -173,10 +205,7 @@ class App extends React.Component {
                                     {this.state.savedSearches.length > 0 && (
                                         <SearchHistory
                                             searchHistory={this.state.savedSearches}
-                                            onSearchHistoryClicked={(search) => {
-                                                console.log('clicked on history for', search);
-                                                this.makeApiRequest(search);
-                                            }}
+                                            onClick={this.resultOnClick}
                                         />
                                     )}
                                 </div>
@@ -208,7 +237,7 @@ class App extends React.Component {
 
 
                     {this.state.check === 1 && (<Result data={this.state.json} onClick={this.resultOnClick} />)}
-                    {this.state.check === 3 && (<Recipe data={this.state.recipe}/>)}
+                    {this.state.check === 3 && (<Recipe data={this.state.recipe} history={this.loadSearchHistory} shopping={this.loadShoppingList}/>)}
                 </div>
             </Router>
         );
@@ -238,6 +267,7 @@ class App extends React.Component {
             });
         });
     }
+
     resultOnClick = (data) => {
         this.setState({
             check: 3,
