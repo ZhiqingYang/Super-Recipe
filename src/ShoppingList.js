@@ -32,7 +32,7 @@ class ShoppingList extends React.Component {
                     })}
                 </ul>
 
-                <button id="clear-shopping-list" onClick={(e) => {
+                <button type="button" className="btn btn-secondary" id="clear-shopping-list" onClick={(e) => {
                     this.props.clearAll();
 
                 }}>
