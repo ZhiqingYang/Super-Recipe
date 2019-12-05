@@ -78,7 +78,7 @@ class App extends React.Component {
 
 
     makeApiRequest = (query) => {
-        var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=3";
+        var url = "https://api.edamam.com/search?q=" + query + "&app_id=" + appid + "&app_key=" + apiKey + "&from=0&to=16";
         var fetchPromise = fetch(url);
         fetchPromise.then((response) => {
             console.log("debug");
@@ -130,6 +130,7 @@ class App extends React.Component {
                             onSubmit={(query) => {
                                 this.makeApiRequest(query);
                             }} />
+                        <Link to="/shoppinglist"><img className="shop" display="inline-block" src={shopping} height="50px" weight="50px" className="cart" alt="cart" /></Link>
                         <p>{this.state.check}</p>
                         {console.log(this.state.json)}
 
